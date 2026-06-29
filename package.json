@@ -1,6 +1,5 @@
 {
   "name": "@bemedev/new-package-monorepo",
-  "version": "0.0.1",
   "private": true,
   "description": "Monorepo workspace root",
   "author": {
