@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 
-type ThemeMode = 'light' | 'dark' | 'auto';
+export const MAPPER = {
+  auto: 'auto  ❤️',
+  dark: 'dark  🌙',
+  light: 'light  ☀️',
+} as const;
+
+type ThemeMode = keyof typeof MAPPER;
 
 function getInitialMode(): ThemeMode {
   if (typeof window === 'undefined') return 'auto';

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { beforeAll, describe, expect, test, vi } from 'vitest';
-import { ThemeToggle } from './ThemeToggle';
+import { ThemeToggle, MAPPER } from './ThemeToggle';
 
 describe('ThemeToggle', () => {
   beforeAll(() => {
@@ -23,15 +23,15 @@ describe('ThemeToggle', () => {
     render(<ThemeToggle />);
 
     const button = screen.getByRole('button');
-    expect(button.textContent).toBe('Auto');
+    expect(button.textContent).toBe(MAPPER.auto);
 
     fireEvent.click(button);
-    expect(button.textContent).toBe('Light');
+    expect(button.textContent).toBe(MAPPER.light);
 
     fireEvent.click(button);
-    expect(button.textContent).toBe('Dark');
+    expect(button.textContent).toBe(MAPPER.dark);
 
     fireEvent.click(button);
-    expect(button.textContent).toBe('Auto');
+    expect(button.textContent).toBe(MAPPER.auto);
   });
 });
