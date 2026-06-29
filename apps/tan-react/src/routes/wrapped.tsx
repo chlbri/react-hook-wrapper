@@ -2,11 +2,11 @@ import { Counter } from '#/globals/components/Counter';
 import { HUDBanner } from '#/globals/components/HUDBanner';
 import { WindowWidth } from '#/globals/components/WindowWidth';
 import { useCounter, useWindowWidth } from '#/globals/hooks';
-import { createHookWrapper } from '#/globals/hooks/wrapper';
+import { wrap } from '@bemedev/hook-wrapper';
 import { createFileRoute } from '@tanstack/react-router';
 
-const CounterWrapper = createHookWrapper(useCounter);
-const WindowWidthWrapper = createHookWrapper(useWindowWidth);
+const CounterWrapper = wrap(useCounter);
+const WindowWidthWrapper = wrap(useWindowWidth);
 
 export const Route = createFileRoute('/wrapped')({
   notFoundComponent: () => <>NotFound</>,

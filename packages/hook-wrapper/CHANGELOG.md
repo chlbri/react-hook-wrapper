@@ -1,16 +1,20 @@
-# Beatifull lib
+## CHANGELOG
 
-A beautifull description
+<details>
+<summary>
 
-<br/>
+## **[0.1.1] - 29/06/2026** => _16:28_
 
-## Licence
+</summary>
 
-MIT
+- Add `wrap` function to allow rendering hooks inside React components
+  without recreating them
+- Add TypeScript type definitions including `Hook` and `WrapperProps`
+- Add unit tests verifying rerendering and behavior
+- Add Rolldown bundler configuration to output CJS and ESM formats
+- <u>Test coverage **_100%_**</u>
 
-## CHANGE_LOG
-
-Read [CHANGELOG.md](CHANGELOG.md) for more details about the changes.
+</details>
 
 <br/>
 

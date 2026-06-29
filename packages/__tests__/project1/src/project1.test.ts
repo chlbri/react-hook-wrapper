@@ -1,7 +1,7 @@
-import todo from '@bemedev/new-package-name-to-change';
+import { wrap } from '@bemedev/hook-wrapper';
 
 describe('project1 tests', () => {
-  test('runs core todo function', () => {
-    expect(todo()).toBe('todo');
+  test('wrap is defined', () => {
+    expect(wrap).toBeDefined();
   });
 });

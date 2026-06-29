@@ -18,6 +18,7 @@
     "_ci": "pnpm run lint && pnpm run build && pnpm run test"
   },
   "dependencies": {
+    "@bemedev/hook-wrapper": "workspace:^",
     "@tailwindcss/vite": "^4.3.1",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-router": "latest",

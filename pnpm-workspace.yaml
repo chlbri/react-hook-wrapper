@@ -1,5 +1,5 @@
 packages:
-  - 'packages/core'
+  - 'packages/hook-wrapper'
   - 'packages/__tests__/project1'
   - 'packages/utils/vitest'
   - 'apps/tan-react'
@@ -10,4 +10,4 @@ allowBuilds:
 minimumReleaseAge: 300
 
 minimumReleaseAgeExclude:
-  - '@bemedev/dev-utils@0.8.2'
+  - '@bemedev/*'
