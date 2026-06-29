@@ -2,6 +2,7 @@ packages:
   - 'packages/core'
   - 'packages/__tests__/project1'
   - 'packages/utils/vitest'
+  - 'apps/tan-react'
 
 allowBuilds:
   esbuild: true
