@@ -1,6 +1,7 @@
 {
   "name": "@bemedev/new-package-monorepo",
   "private": true,
+  "version": "0.1.0",
   "description": "Monorepo workspace root",
   "author": {
     "email": "bri_lvi@icloud.com",
