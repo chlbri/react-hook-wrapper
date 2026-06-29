@@ -1,6 +1,23 @@
 import type { useCounter } from '../hooks';
 import { SubRenderTracker } from './SubRenderTracker';
 
+type CounterButtonProps = {
+  step: number;
+  onClick?: () => void;
+};
+
+export const CounterButton = ({
+  onClick = () => {},
+  step,
+}: CounterButtonProps) => (
+  <button
+    className='inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold cursor-pointer transition-all duration-180 border-2 border-blue-500 dark:border-blue-500/20 bg-blue-500/5 hover:bg-blue-500/10 text-blue-700 dark:text-blue-400 shadow-md dark:shadow-slate-200 hover:scale-105'
+    onClick={onClick}
+  >
+    +{step}
+  </button>
+);
+
 export const Counter = ({
   inc,
   count,
@@ -17,12 +34,7 @@ export const Counter = ({
       <span className='font-mono text-lg font-bold text-slate-900 dark:text-slate-100'>
         {count}
       </span>
-      <button
-        className='inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold cursor-pointer transition-all duration-180 border-2 border-blue-500 dark:border-blue-500/20 bg-blue-500/5 hover:bg-blue-500/10 text-blue-700 dark:text-blue-400 shadow-2xl'
-        onClick={inc}
-      >
-        +{step}
-      </button>
+      <CounterButton onClick={inc} step={step} />
     </div>
   </div>
 );

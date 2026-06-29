@@ -1,3 +1,4 @@
+import { ClickOn } from '#/globals/components/ClickOn';
 import { Counter } from '#/globals/components/Counter';
 import { HUDBanner } from '#/globals/components/HUDBanner';
 import { WindowWidth } from '#/globals/components/WindowWidth';
@@ -14,20 +15,21 @@ export const Route = createFileRoute('/wrapped')({
     return (
       <main className='max-w-5xl mx-auto w-full px-4 pb-12 pt-10'>
         {/* Header section */}
-        <section className='mb-8'>
-          <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-2'>
+        <section className='mb-8 flex flex-col space-y-4'>
+          <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400'>
             Paradigm Demo
           </p>
           <h1 className='font-serif text-4xl font-bold text-slate-900 dark:text-slate-100 sm:text-5xl'>
             Wrapped (Hook Wrapper Component)
           </h1>
-          <p className='text-sm text-slate-500 dark:text-slate-400 max-w-3xl mt-2'>
+          <p className='text-sm text-slate-500 dark:text-slate-400 max-w-3xl'>
             In this page, hooks are wrapped inside{' '}
             <code>createHookWrapper()</code>. Notice that updating counters
             or resizing the browser window increments <em>only</em> that
             specific component's sub-renders. The parent page component
             render count remains at 1!
           </p>
+          <ClickOn steps={[10, 5]} />
         </section>
 
         {/* Render HUD Banner */}

@@ -3,19 +3,17 @@ import { useEffect, useState } from 'react';
 type ThemeMode = 'light' | 'dark' | 'auto';
 
 function getInitialMode(): ThemeMode {
-  if (typeof window === 'undefined') {
-    return 'auto';
-  }
-
+  if (typeof window === 'undefined') return 'auto';
   const stored = window.localStorage.getItem('theme');
-  if (stored === 'light' || stored === 'dark' || stored === 'auto') {
-    return stored;
-  }
 
+  const check =
+    stored === 'light' || stored === 'dark' || stored === 'auto';
+
+  if (check) return stored;
   return 'auto';
 }
 
-function applyThemeMode(mode: ThemeMode) {
+const applyThemeMode = (mode: ThemeMode) => {
   const prefersDark = window.matchMedia(
     '(prefers-color-scheme: dark)',
   ).matches;
@@ -32,7 +30,7 @@ function applyThemeMode(mode: ThemeMode) {
   }
 
   document.documentElement.style.colorScheme = resolved;
-}
+};
 
 export const ThemeToggle = () => {
   const [mode, setMode] = useState<ThemeMode>('auto');
@@ -57,18 +55,25 @@ export const ThemeToggle = () => {
     };
   }, [mode]);
 
-  function toggleMode() {
+  const toggleMode = () => {
     const nextMode: ThemeMode =
       mode === 'light' ? 'dark' : mode === 'dark' ? 'auto' : 'light';
     setMode(nextMode);
     applyThemeMode(nextMode);
     window.localStorage.setItem('theme', nextMode);
-  }
+  };
 
   const label =
     mode === 'auto'
       ? 'Theme mode: auto (system). Click to switch to light mode.'
       : `Theme mode: ${mode}. Click to switch mode.`;
+
+  const text =
+    mode === 'auto'
+      ? 'auto  ❤️'
+      : mode === 'dark'
+        ? 'dark  🌙'
+        : 'light  ☀️';
 
   return (
     <button
@@ -78,7 +83,7 @@ export const ThemeToggle = () => {
       title={label}
       className='rounded-full border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 px-3 py-1.5 text-sm font-semibold text-slate-900 dark:text-slate-100 shadow-[0_8px_22px_rgba(30,90,72,0.08)] transition cursor-pointer hover:scale-105 w-20'
     >
-      {mode === 'auto' ? 'Auto' : mode === 'dark' ? 'Dark' : 'Light'}
+      {text}
     </button>
   );
 };
