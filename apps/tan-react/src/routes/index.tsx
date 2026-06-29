@@ -101,10 +101,10 @@ function IndexComponent() {
               Wrapped (Hook Wrapper)
             </h2>
             <p className='text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed'>
-              Wrap your custom hook with <code>createHookWrapper()</code>{' '}
-              to create a container component. This isolates state updates
-              to the sub-tree under the render prop, avoiding top-level
-              parent re-renders.
+              Wrap your custom hook with <code>wrap()</code> to create a
+              container component. This isolates state updates to the
+              sub-tree under the render prop, avoiding top-level parent
+              re-renders.
             </p>
 
             <div className='mb-6'>
@@ -112,7 +112,7 @@ function IndexComponent() {
                 Code Snippet
               </p>
               <pre className='text-xs bg-black/5 dark:bg-white/5 p-4 rounded-xl overflow-x-auto border border-slate-200 dark:border-slate-800 font-mono text-slate-900 dark:text-slate-100'>
-                {`const CounterWrapper = createHookWrapper(useCounter);
+                {`const CounterWrapper = wrap(useCounter);
  
  function MyComponent() {
   // Parent doesn't re-render when counter changes!

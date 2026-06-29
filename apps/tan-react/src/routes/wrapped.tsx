@@ -23,11 +23,10 @@ export const Route = createFileRoute('/wrapped')({
             Wrapped (Hook Wrapper Component)
           </h1>
           <p className='text-sm text-slate-500 dark:text-slate-400 max-w-3xl'>
-            In this page, hooks are wrapped inside{' '}
-            <code>createHookWrapper()</code>. Notice that updating counters
-            or resizing the browser window increments <em>only</em> that
-            specific component's sub-renders. The parent page component
-            render count remains at 1!
+            In this page, hooks are wrapped inside `<code>wrap()</code>`.
+            Notice that updating counters or resizing the browser window
+            increments <em>only</em> that specific component's sub-renders.
+            The parent page component render count remains at 1!
           </p>
           <ClickOn steps={[10, 5]} />
         </section>
