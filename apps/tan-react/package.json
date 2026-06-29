@@ -7,7 +7,7 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "prebuild": "pnpm run build --filter=@bemedev/hook-wrapper",
+    "prebuild": "pnpm run build --filter=./packages/hook-wrapper",
     "dev": "vite dev --port 3000",
     "generate-routes": "tsr generate",
     "build": "vite build",
