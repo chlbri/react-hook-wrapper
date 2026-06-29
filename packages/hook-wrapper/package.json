@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/hook-wrapper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Wrapper of hooks to render them in a component without recreating them.",
   "type": "module",
   "main": "lib/index.js",
@@ -9,6 +9,7 @@
   "files": [
     "lib"
   ],
+  "homepage": "https://hook-wrapper--bemedev.vercel.app",
   "author": {
     "email": "bri_lvi@icloud.com",
     "name": "chlbri",

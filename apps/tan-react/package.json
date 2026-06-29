@@ -16,8 +16,7 @@
     "test:only": "vitest run",
     "posttest": "exit 0",
     "fmt": "oxfmt",
-    "lint": "oxlint --fix && pnpm run fmt",
-    "_ci": "pnpm run lint && pnpm run build && pnpm run test"
+    "lint": "oxlint --fix && pnpm run fmt"
   },
   "dependencies": {
     "@bemedev/hook-wrapper": "workspace:^",
