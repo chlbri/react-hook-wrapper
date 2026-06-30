@@ -15,7 +15,7 @@ export const Route = createFileRoute('/not-wrapped')({
       <main className='max-w-5xl mx-auto w-full px-4 pb-12 pt-10'>
         {/* Header section */}
         <section className='mb-8 flex flex-col space-y-4'>
-          <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400'>
+          <p className='text-[0.69rem] font-bold uppercase tracking-widest text-rose-700 dark:text-rose-400'>
             Paradigm Demo
           </p>
           <h1 className='font-serif text-4xl font-bold text-slate-900 dark:text-slate-100 sm:text-5xl'>
