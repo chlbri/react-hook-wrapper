@@ -69,7 +69,7 @@ export const Credits = () => (
       </a>
 
       {/* Creator Card */}
-      <div className='group relative overflow-hidden flex flex-col justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-linear-to-br from-emerald-500/5 to-teal-500/5 dark:from-emerald-950/10 dark:to-teal-950/10 p-5 transition-all duration-300 hover:scale-110 hover:border-fuchsia-500/30 hover:shadow-lg hover:shadow-fuchsia-500/5'>
+      <div className='group relative overflow-hidden flex flex-col justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-linear-to-br from-slate-500/5 to-yellow-500/5 dark:from-emerald-950/10 dark:to-teal-950/10 p-5 transition-all duration-300 hover:scale-110 hover:border-fuchsia-500/30 hover:shadow-lg hover:shadow-fuchsia-500/5 cursor-default'>
         <div>
           <div className='flex items-center gap-3 mb-3'>
             <div className='relative'>
@@ -97,12 +97,12 @@ export const Credits = () => (
             design patterns and state utilities.
           </p>
         </div>
-        <div className='mt-4 flex flex-wrap gap-2 pt-2 border-t border-slate-200/50 dark:border-slate-800/50'>
+        <div className='mt-4 flex flex-wrap gap-2 pt-2 border-t border-slate-200/50 dark:border-slate-800/50 text-sm'>
           <a
             href='https://github.com/chlbri?tab=repositories'
             target='_blank'
             rel='noreferrer'
-            className='inline-flex items-center justify-center gap-1 text-[11px] font-bold rounded-lg px-2.5 py-1.5 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-100 transition-colors cursor-pointer'
+            className='inline-flex items-center justify-center gap-1 font-bold rounded-lg px-2.5 py-1.5 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-100 transition-colors cursor-pointer'
           >
             GitHub Profile
           </a>
@@ -110,7 +110,7 @@ export const Credits = () => (
             href='https://beme-dev.vercel.app'
             target='_blank'
             rel='noreferrer'
-            className='inline-flex items-center justify-center gap-1 text-[11px] font-bold rounded-lg px-2.5 py-1.5 bg-rose-300 hover:bg-rose-600 dark:bg-fuchsia-800 dark:hover:bg-fuchsia-900 text-white transition-colors cursor-pointer font-mono'
+            className='inline-flex items-center justify-center gap-1 font-bold rounded-lg px-2.5 py-1.5 bg-rose-100 text-rose-600 group-hover:bg-rose-500 hover:bg-rose-600 dark:bg-fuchsia-200 dark:group-hover:bg-fuchsia-700 dark:hover:bg-fuchsia-800 group-hover:text-white dark:text-fuchsia-800 dark:group-hover:text-white transition-colors cursor-pointer font-mono'
           >
             Portfolio Site
           </a>
