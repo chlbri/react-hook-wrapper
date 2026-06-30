@@ -4,7 +4,7 @@ import { MyGithub } from './MyGithub';
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 px-4 backdrop-blur-lg'>
+    <header className='fixed w-full top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 px-4 backdrop-blur-lg'>
       <nav className='max-w-5xl mx-auto w-full flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4'>
         <h2 className='m-0 shrink-0 text-base font-semibold tracking-tight'>
           <Link
