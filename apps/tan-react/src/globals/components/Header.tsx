@@ -19,17 +19,17 @@ export default function Header() {
           </Link>
         </h2>
 
-        <div className='order-3 flex w-full flex-wrap items-center gap-x-4 gap-y-1 pb-1 text-sm font-semibold sm:order-0 sm:w-auto sm:flex-nowrap sm:pb-0'>
+        <div className='order-3 flex w-full flex-wrap items-center gap-x-4 gap-y-1 pb-1 text-sm font-semibold sm:order-0 sm:w-auto sm:flex-nowrap sm:pb-0 transition-colors duration-150 ease-linear'>
           <Link
             to='/'
-            className='py-1 transition-colors'
+            className='py-1 '
             inactiveProps={{
               className:
                 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100',
             }}
             activeProps={{
               className:
-                'text-slate-900 dark:text-slate-100 border-b-2 border-yellow-800',
+                'text-yellow-800 dark:text-slate-100 border-b-2 border-yellow-800',
             }}
             activeOptions={{ exact: true }}
           >
@@ -37,28 +37,28 @@ export default function Header() {
           </Link>
           <Link
             to='/wrapped'
-            className='py-1 transition-colors'
+            className='py-1'
             inactiveProps={{
               className:
                 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100',
             }}
             activeProps={{
               className:
-                'text-slate-900 dark:text-slate-100 border-b-2 border-emerald-500',
+                'text-emerald-900 dark:text-emerald-50 border-b-2 border-emerald-500',
             }}
           >
             Wrapped
           </Link>
           <Link
             to='/not-wrapped'
-            className='py-1 transition-colors'
+            className='py-1'
             inactiveProps={{
               className:
                 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100',
             }}
             activeProps={{
               className:
-                'text-slate-900 dark:text-slate-100 border-b-2 border-red-600 dark:border-rose-700',
+                'text-rose-900 dark:text-red-100 border-b-2 border-red-600 dark:border-rose-700',
             }}
           >
             Not Wrapped
