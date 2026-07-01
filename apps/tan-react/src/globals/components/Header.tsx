@@ -29,7 +29,7 @@ export default function Header() {
             }}
             activeProps={{
               className:
-                'text-yellow-800 dark:text-orange-100 border-b-2 border-yellow-800',
+                'text-yellow-800 dark:text-orange-100 border-b-2 border-yellow-800 font-bold font-mono',
             }}
             activeOptions={{ exact: true }}
           >
@@ -44,7 +44,7 @@ export default function Header() {
             }}
             activeProps={{
               className:
-                'text-emerald-900 dark:text-emerald-50 border-b-2 border-emerald-500',
+                'text-emerald-900 dark:text-emerald-50 border-b-2 border-emerald-500 font-bold font-mono',
             }}
           >
             Wrapped
@@ -58,7 +58,7 @@ export default function Header() {
             }}
             activeProps={{
               className:
-                'text-rose-900 dark:text-red-100 border-b-2 border-red-600 dark:border-rose-700',
+                'text-rose-900 dark:text-red-100 border-b-2 border-red-600 dark:border-rose-700 font-bold font-mono',
             }}
           >
             Not Wrapped
