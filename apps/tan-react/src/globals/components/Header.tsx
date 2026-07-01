@@ -29,7 +29,7 @@ export default function Header() {
             }}
             activeProps={{
               className:
-                'text-yellow-800 dark:text-slate-100 border-b-2 border-yellow-800',
+                'text-yellow-800 dark:text-orange-100 border-b-2 border-yellow-800',
             }}
             activeOptions={{ exact: true }}
           >
