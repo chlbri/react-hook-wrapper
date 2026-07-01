@@ -21,7 +21,7 @@ export const Route = createFileRoute('/not-wrapped')({
           <h1 className='font-serif text-4xl font-bold text-slate-900 dark:text-slate-100 sm:text-5xl'>
             Standard Hook Call (Not Wrapped)
           </h1>
-          <p className='text-sm text-slate-500 dark:text-slate-400 max-w-3xl'>
+          <p className='text-slate-500 dark:text-slate-300 max-w-3xl'>
             In this page, hooks are called directly in the body of the main
             component. Notice how any interaction below immediately
             triggers a full parent component re-render.

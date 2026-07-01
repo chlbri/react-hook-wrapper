@@ -11,7 +11,7 @@ export default function Header() {
             to='/'
             className='inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 px-3 py-1.5 text-sm text-slate-900 dark:text-slate-100 no-underline shadow-[0_8px_24px_rgba(30,90,72,0.08)] sm:px-4 sm:py-2'
           >
-            <span className='h-2 w-2 rounded-full bg-[linear-gradient(90deg,#56c6be,#7ed3bf)]' />
+            <span className='size-3 rounded-full bg-linear-to-br dark:from-indigo-500 dark:to-rose-200 from-rose-700 to-indigo-100' />
             <div className='font-mono flex space-x-2'>
               <span className='font-bold'>`hook`</span>
               <span className='font-light'>Wrapper</span>
@@ -29,7 +29,7 @@ export default function Header() {
             }}
             activeProps={{
               className:
-                'text-slate-900 dark:text-slate-100 border-b-2 border-emerald-500',
+                'text-slate-900 dark:text-slate-100 border-b-2 border-yellow-800',
             }}
             activeOptions={{ exact: true }}
           >
@@ -58,7 +58,7 @@ export default function Header() {
             }}
             activeProps={{
               className:
-                'text-slate-900 dark:text-slate-100 border-b-2 border-emerald-500',
+                'text-slate-900 dark:text-slate-100 border-b-2 border-red-600 dark:border-rose-700',
             }}
           >
             Not Wrapped

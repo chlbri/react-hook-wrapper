@@ -47,7 +47,7 @@ export const Route = createRootRoute({
           />
           <HeadContent />
         </head>
-        <body className='font-sans antialiased wrap-anywhere bg-zinc-100 text-slate-900 dark:bg-slate-950 dark:text-slate-100'>
+        <body className='font-sans antialiased wrap-anywhere bg-zinc-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100'>
           <div className='min-h-screen flex flex-col  justify-between'>
             <Header />
             <div className='mt-16'>{children}</div>
