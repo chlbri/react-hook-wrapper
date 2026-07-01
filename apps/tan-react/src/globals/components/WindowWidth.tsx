@@ -16,7 +16,7 @@ export const WindowWidth = ({ width, form }: Props) => (
       </p>
     </div>
     <div className='flex flex-wrap justify-center gap-2 items-center'>
-      <span className='inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-700 dark:text-green-300'>
+      <span className='inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full border border-blue-500/20 bg-blue-500/5 text-cyan-800 dark:text-green-300 font-mono'>
         {form}
       </span>
       <SubRenderTracker />
