@@ -100,9 +100,10 @@ function IndexComponent() {
               Wrapped (Hook Wrapper)
             </h2>
             <p className='mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
-              Wrap your custom hook with <code>wrap()</code> to create a container
-              component. This isolates state updates to the sub-tree under the render
-              prop, avoiding top-level parent re-renders.
+              Wrap your custom hook with <code>wrap()</code> or{' '}
+              <code>useHook()</code> to create a container component. This isolates
+              state updates to the sub-tree under the render prop, avoiding top-level
+              parent re-renders.
             </p>
 
             <div className='mb-6'>
@@ -110,7 +111,9 @@ function IndexComponent() {
                 Code Snippet
               </p>
               <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
-                {`const CounterWrapper = wrap(useCounter);
+                {`import { useHook } from '@bemedev/hook-wrapper';
+
+const CounterWrapper = useHook(useCounter);
  
  function MyComponent() {
   // Parent doesn't re-render when counter changes!
@@ -380,16 +383,16 @@ export const useCounter = ({ step = 1 }: { step?: number } = {}) => {
                 </span>
               </div>
               <p className='mb-4 text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
-                Pass your custom hook to the <code>wrap()</code> function. Mount the
-                returned wrapper, passing hook parameters as props and rendering the
-                UI.
+                Pass your custom hook to the <code>wrap()</code> or{' '}
+                <code>useHook()</code> function. Mount the returned wrapper, passing
+                hook parameters as props and rendering the UI.
               </p>
               <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
-                {`import { wrap } from '@bemedev/hook-wrapper';
+                {`import { useHook } from '@bemedev/hook-wrapper';
 import { useCounter } from './useCounter';
 
 // Wrap hook to get a React Component
-const CounterWrapper = wrap(useCounter);
+const CounterWrapper = useHook(useCounter);
 
 export const Demo = () => (
   <CounterWrapper
@@ -427,7 +430,7 @@ export const Demo = () => (
         <div className='overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-950/20'>
           <div className='flex items-center justify-between border-b border-slate-200 bg-slate-100/80 px-5 py-3.5 dark:border-slate-800 dark:bg-slate-800/80'>
             <span className='font-mono text-sm font-bold text-slate-900 dark:text-slate-100'>
-              wrap(hook)
+              wrap(hook) / useHook(hook)
             </span>
             <span className='rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-emerald-600 uppercase dark:text-emerald-400'>
               Core API
@@ -435,6 +438,11 @@ export const Demo = () => (
           </div>
 
           <div className='space-y-4 p-5 text-sm'>
+            <p className='text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
+              Both exports are functionally identical. <code>useHook</code> is
+              provided as a semantic alternative for developers preferring standard
+              hook naming conventions.
+            </p>
             <div>
               <p className='mb-1 font-semibold text-slate-950 dark:text-slate-50'>
                 Parameters

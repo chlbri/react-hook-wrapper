@@ -12,7 +12,8 @@ In standard React development, calling a hook inside a parent component causes t
 entire parent component (and all its children) to rerender whenever the hook's state
 changes.
 
-By wrapping the hook with `wrap(useHook)`, you create a wrapper component that:
+By wrapping a custom hook with `wrap` or `useHook`, you create a wrapper component
+that:
 
 1. Calls the hook internally.
 2. Accepts hook arguments as props.
@@ -84,9 +85,10 @@ export const Demo = () => {
 
 ## API Reference
 
-### `wrap(hook)`
+### `wrap(hook)` / `useHook(hook)`
 
-Wraps a custom hook and returns a component that renders it.
+Wraps a custom hook and returns a component that renders it (`useHook` is an alias of
+`wrap`).
 
 #### Parameters
 

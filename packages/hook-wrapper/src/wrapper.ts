@@ -14,3 +14,5 @@ export const wrap: Wrapper_F = hook => {
     return render(hookData);
   };
 };
+
+export const useHook = wrap;

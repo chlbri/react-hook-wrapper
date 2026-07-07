@@ -3,6 +3,24 @@
 <details>
 <summary>
 
+## **[0.2.0] - 07/07/2026** => _16:20_
+
+</summary>
+
+- Add `useHook` alias for the `wrap` function
+- Update `README.md` to document the new `useHook` alias
+- Refactor and group tests under `#01 => wrap` and `#02 => useHook`
+- Format `tsconfig.json` and `vitest.config.ts`
+- Update `rolldown` to `1.1.4` and `vitest` to `4.1.10`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.1.1] - 29/06/2026** => _16:28_
 
 </summary>

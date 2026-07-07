@@ -1,4 +1,4 @@
-import { wrap } from '@bemedev/hook-wrapper';
+import { wrap, useHook } from '@bemedev/hook-wrapper';
 import { createFileRoute } from '@tanstack/react-router';
 
 import { ClickOn } from '#/globals/components/ClickOn';
@@ -8,7 +8,7 @@ import { WindowWidth } from '#/globals/components/WindowWidth';
 import { useCounter, useWindowWidth } from '#/globals/hooks';
 
 const CounterWrapper = wrap(useCounter);
-const WindowWidthWrapper = wrap(useWindowWidth);
+const WindowWidthWrapper = useHook(useWindowWidth);
 
 export const Route = createFileRoute('/wrapped')({
   notFoundComponent: () => <>NotFound</>,
@@ -24,10 +24,10 @@ export const Route = createFileRoute('/wrapped')({
             Wrapped (Hook Wrapper Component)
           </h1>
           <p className='max-w-3xl text-slate-500 dark:text-slate-300'>
-            In this page, hooks are wrapped inside `<code>wrap()</code>`. Notice that
-            updating counters or resizing the browser window increments <em>only</em>{' '}
-            that specific component's sub-renders. The parent page component render
-            count remains at 1!
+            In this page, hooks are wrapped inside `<code>wrap()</code>` or `
+            <code>useHook()</code>`. Notice that updating counters or resizing the
+            browser window increments <em>only</em> that specific component's
+            sub-renders. The parent page component render count remains at 1!
           </p>
           <ClickOn steps={[10, 5]} />
         </section>

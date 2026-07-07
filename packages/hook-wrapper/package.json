@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/hook-wrapper",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Wrapper of hooks to render them in a component without recreating them.",
   "type": "module",
   "main": "lib/index.js",
@@ -62,9 +62,9 @@
     "jsdom": "^29.1.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "rolldown": "^1.1.3",
+    "rolldown": "^1.1.4",
     "typescript": "^6.0.3",
-    "vitest": "4.1.9"
+    "vitest": "4.1.10"
   },
   "engines": {
     "node": ">=24"
