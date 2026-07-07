@@ -7,8 +7,12 @@ export default defineConfig({
   htmlWhitespaceSensitivity: 'css',
   jsxSingleQuote: true,
   bracketSameLine: false,
-  printWidth: 75,
+  printWidth: 85,
   proseWrap: 'always',
+  singleAttributePerLine: true,
+  objectWrap: 'collapse',
+  sortImports: true,
+  sortTailwindcss: true,
   requirePragma: false,
   semi: true,
   singleQuote: true,
@@ -18,4 +22,6 @@ export default defineConfig({
   vueIndentScriptAndStyle: true,
   sortPackageJson: false,
   ignorePatterns: ['node_modules', 'publish', 'publish_npm', 'lib'],
+  jsdoc: true,
+  
 });

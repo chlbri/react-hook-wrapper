@@ -1,19 +1,12 @@
-import {
-  fireEvent,
-  render,
-  screen,
-  cleanup,
-} from '@testing-library/react';
+import { fireEvent, render, screen, cleanup } from '@testing-library/react';
 import { useState } from 'react';
+
 import { wrap } from './wrapper';
 
 describe('hook-wrapper tests', () => {
   const useCounter = ({ step = 1 }: { step?: number } = {}) => {
     const [count, setCount] = useState(0);
-    return {
-      count,
-      inc: () => setCount(c => c + step),
-    };
+    return { count, inc: () => setCount(c => c + step) };
   };
 
   const DirectDemo = ({
@@ -28,7 +21,10 @@ describe('hook-wrapper tests', () => {
     return (
       <div>
         <span data-testid='direct-count'>{count}</span>
-        <button data-testid='direct-inc-btn' onClick={inc}>
+        <button
+          data-testid='direct-inc-btn'
+          onClick={inc}
+        >
           Inc
         </button>
       </div>
@@ -56,7 +52,10 @@ describe('hook-wrapper tests', () => {
             return (
               <div>
                 <span data-testid='wrapped-count'>{count}</span>
-                <button data-testid='wrapped-inc-btn' onClick={inc}>
+                <button
+                  data-testid='wrapped-inc-btn'
+                  onClick={inc}
+                >
                   Inc
                 </button>
               </div>
@@ -72,7 +71,12 @@ describe('hook-wrapper tests', () => {
   const childRenders = { count: 0 };
 
   beforeAll(() => {
-    render(<DirectDemo parentRenders={directRenders} step={1} />);
+    render(
+      <DirectDemo
+        parentRenders={directRenders}
+        step={1}
+      />,
+    );
     render(
       <WrappedDemo
         parentRenders={parentRenders}

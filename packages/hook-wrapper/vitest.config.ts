@@ -6,8 +6,6 @@ export default shared({
   test: {
     name: 'core',
     environment: 'jsdom',
-    env: {
-      RTL_SKIP_AUTO_CLEANUP: 'true',
-    },
+    env: { RTL_SKIP_AUTO_CLEANUP: 'true' },
   },
 });

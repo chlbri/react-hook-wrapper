@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { beforeAll, describe, expect, test, vi } from 'vitest';
+
 import { ThemeToggle, MAPPER } from './ThemeToggle';
 
 describe('ThemeToggle', () => {

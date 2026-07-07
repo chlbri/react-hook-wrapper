@@ -7,8 +7,8 @@
 
 </summary>
 
-- Add `wrap` function to allow rendering hooks inside React components
-  without recreating them
+- Add `wrap` function to allow rendering hooks inside React components without
+  recreating them
 - Add TypeScript type definitions including `Hook` and `WrapperProps`
 - Add unit tests verifying rerendering and behavior
 - Add Rolldown bundler configuration to output CJS and ESM formats

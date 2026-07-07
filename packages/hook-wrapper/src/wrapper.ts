@@ -1,5 +1,6 @@
 // hookWrapperFactory.tsx
 import { type JSX } from 'react';
+
 import type { Hook, WrapperProps } from './types';
 
 export type Wrapper_F = <const T extends Hook>(

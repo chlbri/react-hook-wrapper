@@ -9,8 +9,6 @@ export default shared({
     environment: 'jsdom',
     passWithNoTests: true,
     globals: true,
-    env: {
-      RTL_SKIP_AUTO_CLEANUP: 'true',
-    },
+    env: { RTL_SKIP_AUTO_CLEANUP: 'true' },
   },
 });

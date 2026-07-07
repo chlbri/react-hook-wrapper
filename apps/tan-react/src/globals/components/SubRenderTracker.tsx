@@ -5,7 +5,7 @@ export const SubRenderTracker = () => {
   const renders = useRef(0);
   renders.current += 1;
   return (
-    <span className='text-sm border-blue-500/20 bg-blue-500/5 text-zinc-500 dark:text-blue-300 font-mono font-semibold'>
+    <span className='border-blue-500/20 bg-blue-500/5 font-mono text-sm font-semibold text-zinc-500 dark:text-blue-300'>
       Render Count: {renders.current}
     </span>
   );

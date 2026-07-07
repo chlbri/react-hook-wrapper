@@ -12,19 +12,15 @@ function getInitialMode(): ThemeMode {
   if (typeof window === 'undefined') return 'auto';
   const stored = window.localStorage.getItem('theme');
 
-  const check =
-    stored === 'light' || stored === 'dark' || stored === 'auto';
+  const check = stored === 'light' || stored === 'dark' || stored === 'auto';
 
   if (check) return stored;
   return 'auto';
 }
 
 const applyThemeMode = (mode: ThemeMode) => {
-  const prefersDark = window.matchMedia(
-    '(prefers-color-scheme: dark)',
-  ).matches;
-  const resolved =
-    mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const resolved = mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
 
   document.documentElement.classList.remove('light', 'dark');
   document.documentElement.classList.add(resolved);
@@ -75,11 +71,7 @@ export const ThemeToggle = () => {
       : `Theme mode: ${mode}. Click to switch mode.`;
 
   const text =
-    mode === 'auto'
-      ? 'auto  ❤️'
-      : mode === 'dark'
-        ? 'dark  🌙'
-        : 'light  ☀️';
+    mode === 'auto' ? 'auto  ❤️' : mode === 'dark' ? 'dark  🌙' : 'light  ☀️';
 
   return (
     <button
@@ -87,7 +79,7 @@ export const ThemeToggle = () => {
       onClick={toggleMode}
       aria-label={label}
       title={label}
-      className='rounded-full border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 px-3 py-1.5 text-sm font-semibold text-slate-900 dark:text-slate-100 shadow-[0_8px_22px_rgba(30,90,72,0.08)] transition cursor-pointer hover:scale-105 w-20'
+      className='w-20 cursor-pointer rounded-full border border-slate-200 bg-white/50 px-3 py-1.5 text-sm font-semibold text-slate-900 shadow-[0_8px_22px_rgba(30,90,72,0.08)] transition hover:scale-105 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-100'
     >
       {text}
     </button>

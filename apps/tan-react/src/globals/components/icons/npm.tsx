@@ -1,16 +1,11 @@
-type Props = {
-  size: number;
-};
+type Props = { size: number };
 
 export const Icon_NPM = ({ size }: Props) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     viewBox='0 0 512 512'
     className='transition-colors duration-300 ease-in'
-    style={{
-      width: `${size}px`,
-      height: `${size}px`,
-    }}
+    style={{ width: `${size}px`, height: `${size}px` }}
   >
     <path
       d='M0 156.2v171h142.3v28.6H256v-28.6h256v-171z'

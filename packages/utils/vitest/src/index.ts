@@ -2,9 +2,7 @@ import { defineConfig, type ViteUserConfig } from 'vitest/config';
 
 export const shared = (conf: ViteUserConfig) =>
   defineConfig({
-    resolve: {
-      tsconfigPaths: true,
-    },
+    resolve: { tsconfigPaths: true },
 
     ...conf,
 
@@ -12,10 +10,7 @@ export const shared = (conf: ViteUserConfig) =>
       globals: true,
       logHeapUsage: false,
 
-      env: {
-        NODE_ENV: 'test',
-        ...(conf.test?.env ?? {}),
-      },
+      env: { NODE_ENV: 'test', ...(conf.test?.env ?? {}) },
 
       ...conf.test,
     },

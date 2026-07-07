@@ -8,80 +8,80 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as WrappedRouteImport } from './routes/wrapped'
-import { Route as NotWrappedRouteImport } from './routes/not-wrapped'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as rootRouteImport } from './routes/__root';
+import { Route as IndexRouteImport } from './routes/index';
+import { Route as NotWrappedRouteImport } from './routes/not-wrapped';
+import { Route as WrappedRouteImport } from './routes/wrapped';
 
 const WrappedRoute = WrappedRouteImport.update({
   id: '/wrapped',
   path: '/wrapped',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const NotWrappedRoute = NotWrappedRouteImport.update({
   id: '/not-wrapped',
   path: '/not-wrapped',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/not-wrapped': typeof NotWrappedRoute
-  '/wrapped': typeof WrappedRoute
+  '/': typeof IndexRoute;
+  '/not-wrapped': typeof NotWrappedRoute;
+  '/wrapped': typeof WrappedRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/not-wrapped': typeof NotWrappedRoute
-  '/wrapped': typeof WrappedRoute
+  '/': typeof IndexRoute;
+  '/not-wrapped': typeof NotWrappedRoute;
+  '/wrapped': typeof WrappedRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/not-wrapped': typeof NotWrappedRoute
-  '/wrapped': typeof WrappedRoute
+  __root__: typeof rootRouteImport;
+  '/': typeof IndexRoute;
+  '/not-wrapped': typeof NotWrappedRoute;
+  '/wrapped': typeof WrappedRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/not-wrapped' | '/wrapped'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/not-wrapped' | '/wrapped'
-  id: '__root__' | '/' | '/not-wrapped' | '/wrapped'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: '/' | '/not-wrapped' | '/wrapped';
+  fileRoutesByTo: FileRoutesByTo;
+  to: '/' | '/not-wrapped' | '/wrapped';
+  id: '__root__' | '/' | '/not-wrapped' | '/wrapped';
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  NotWrappedRoute: typeof NotWrappedRoute
-  WrappedRoute: typeof WrappedRoute
+  IndexRoute: typeof IndexRoute;
+  NotWrappedRoute: typeof NotWrappedRoute;
+  WrappedRoute: typeof WrappedRoute;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/wrapped': {
-      id: '/wrapped'
-      path: '/wrapped'
-      fullPath: '/wrapped'
-      preLoaderRoute: typeof WrappedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/wrapped';
+      path: '/wrapped';
+      fullPath: '/wrapped';
+      preLoaderRoute: typeof WrappedRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/not-wrapped': {
-      id: '/not-wrapped'
-      path: '/not-wrapped'
-      fullPath: '/not-wrapped'
-      preLoaderRoute: typeof NotWrappedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/not-wrapped';
+      path: '/not-wrapped';
+      fullPath: '/not-wrapped';
+      preLoaderRoute: typeof NotWrappedRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
   }
 }
 
@@ -89,16 +89,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   NotWrappedRoute: NotWrappedRoute,
   WrappedRoute: WrappedRoute,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
 
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { createStart } from '@tanstack/react-start';
+
+import type { getRouter } from './router.tsx';
 declare module '@tanstack/react-start' {
   interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
+    ssr: true;
+    router: Awaited<ReturnType<typeof getRouter>>;
   }
 }

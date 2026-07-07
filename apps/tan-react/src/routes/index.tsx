@@ -1,36 +1,35 @@
-import { useState } from 'react';
 import { createFileRoute, Link } from '@tanstack/react-router';
+import { useState } from 'react';
+
 import { Credits } from '#/globals/components/Credits';
 import { bumper } from '#/globals/hooks/bumper';
 
 export const Route = createFileRoute('/')({ component: IndexComponent });
 
 function IndexComponent() {
-  const [pkgManager, setPkgManager] = useState<'pnpm' | 'npm' | 'yarn'>(
-    'pnpm',
-  );
+  const [pkgManager, setPkgManager] = useState<'pnpm' | 'npm' | 'yarn'>('pnpm');
   const [copied, setCopied] = useState(false);
   const enterStyle = bumper(200);
 
   return (
-    <main className='max-w-7xl mx-auto w-full px-4 pb-12 pt-10 flex flex-col space-y-8 mt-6'>
+    <main className='mx-auto mt-6 flex w-full max-w-7xl flex-col space-y-8 px-4 pt-10 pb-12'>
       {/* Hero Section */}
-      <section className='bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md backdrop-blur-md rise-in relative overflow-hidden rounded-3xl px-6 py-10 sm:px-10 sm:py-14'>
-        <div className='pointer-events-none absolute -left-20 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.32),transparent_66%)]' />
-        <div className='pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(47,106,74,0.18),transparent_66%)]' />
+      <section className='rise-in relative overflow-hidden rounded-3xl border border-slate-200 bg-white/80 px-6 py-10 shadow-md backdrop-blur-md sm:px-10 sm:py-14 dark:border-slate-800 dark:bg-slate-900/80'>
+        <div className='pointer-events-none absolute -top-24 -left-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.32),transparent_66%)]' />
+        <div className='pointer-events-none absolute -right-20 -bottom-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(47,106,74,0.18),transparent_66%)]' />
 
-        <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-3'>
+        <p className='mb-3 text-[0.69rem] font-bold tracking-widest text-emerald-700 uppercase dark:text-emerald-400'>
           React Design Patterns
         </p>
-        <h1 className='font-serif mb-5 max-w-4xl text-4xl leading-[1.05] font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-6xl'>
+        <h1 className='mb-5 max-w-4xl font-serif text-4xl leading-[1.05] font-bold tracking-tight text-slate-900 sm:text-6xl dark:text-slate-100'>
           Decouple stateful logic from UI rendering.
         </h1>
-        <p className='mb-8 max-w-3xl text-base text-slate-500 dark:text-slate-400 sm:text-lg leading-relaxed'>
-          Custom hooks are React's primary way to share stateful behavior.
-          However, calling them directly at the root of a large page
-          component forces the entire page to re-render whenever the hook
-          updates. The <strong>Hook Wrapper Pattern</strong> compiles hooks
-          into reusable components to isolate re-render performance.
+        <p className='mb-8 max-w-3xl text-base leading-relaxed text-slate-500 sm:text-lg dark:text-slate-400'>
+          Custom hooks are React's primary way to share stateful behavior. However,
+          calling them directly at the root of a large page component forces the
+          entire page to re-render whenever the hook updates. The{' '}
+          <strong>Hook Wrapper Pattern</strong> compiles hooks into reusable
+          components to isolate re-render performance.
         </p>
       </section>
 
@@ -38,30 +37,30 @@ function IndexComponent() {
       <section className='grid gap-6 md:grid-cols-2'>
         {/* Card 1: Not Wrapped */}
         <article
-          className='bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md backdrop-blur-md rise-in rounded-3xl p-6 sm:p-8 flex flex-col justify-between'
+          className='rise-in flex flex-col justify-between rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-md sm:p-8 dark:border-slate-800 dark:bg-slate-900/80'
           style={{ animationDelay: '100ms' }}
         >
           <div>
-            <div className='flex items-center gap-2.5 mb-4'>
+            <div className='mb-4 flex items-center gap-2.5'>
               <span className='h-3 w-3 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]' />
-              <p className='text-[0.69rem] font-bold uppercase tracking-widest text-rose-500 m-0'>
+              <p className='m-0 text-[0.69rem] font-bold tracking-widest text-rose-500 uppercase'>
                 Standard Call Pattern
               </p>
             </div>
-            <h2 className='font-serif text-2xl font-bold mb-3 text-slate-900 dark:text-slate-100'>
+            <h2 className='mb-3 font-serif text-2xl font-bold text-slate-900 dark:text-slate-100'>
               Not Wrapped (Direct Hook)
             </h2>
-            <p className='text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed'>
-              Invoke hooks directly at the root of your component. Easy to
-              write and straightforward for simple components, but ties the
-              entire component's lifecycle to the hook's state transitions.
+            <p className='mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
+              Invoke hooks directly at the root of your component. Easy to write and
+              straightforward for simple components, but ties the entire component's
+              lifecycle to the hook's state transitions.
             </p>
 
             <div className='mb-6'>
-              <p className='text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2'>
+              <p className='mb-2 text-xs font-bold tracking-wider text-slate-500 uppercase dark:text-slate-400'>
                 Code Snippet
               </p>
-              <pre className='text-xs bg-black/5 dark:bg-white/5 p-4 rounded-xl overflow-x-auto border border-slate-200 dark:border-slate-800 font-mono text-slate-900 dark:text-slate-100'>
+              <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
                 {`function MyComponent() {
   // Triggers full re-render on state change
   const { count, inc } = useCounter({ step: 1 });
@@ -79,7 +78,7 @@ function IndexComponent() {
 
           <Link
             to='/not-wrapped'
-            className='inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold cursor-pointer transition-all duration-180 w-full border border-rose-500/30 bg-rose-500/5 hover:bg-rose-500/10 text-slate-900 dark:text-slate-100 text-center no-underline mt-4'
+            className='mt-4 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/5 px-4 py-2.5 text-center text-sm font-bold text-slate-900 no-underline transition-all duration-180 hover:bg-rose-500/10 dark:text-slate-100'
           >
             Explore Not Wrapped Demo →
           </Link>
@@ -87,31 +86,30 @@ function IndexComponent() {
 
         {/* Card 2: Wrapped */}
         <article
-          className='bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md backdrop-blur-md rise-in rounded-3xl p-6 sm:p-8 flex flex-col justify-between'
+          className='rise-in flex flex-col justify-between rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-md sm:p-8 dark:border-slate-800 dark:bg-slate-900/80'
           style={{ animationDelay: '200ms' }}
         >
           <div>
-            <div className='flex items-center gap-2.5 mb-4'>
+            <div className='mb-4 flex items-center gap-2.5'>
               <span className='h-3 w-3 rounded-full bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.5)]' />
-              <p className='text-[0.69rem] font-bold uppercase tracking-widest text-teal-600 dark:text-teal-400 m-0'>
+              <p className='m-0 text-[0.69rem] font-bold tracking-widest text-teal-600 uppercase dark:text-teal-400'>
                 Wrapper Pattern
               </p>
             </div>
-            <h2 className='font-serif text-2xl font-bold mb-3 text-slate-900 dark:text-slate-100'>
+            <h2 className='mb-3 font-serif text-2xl font-bold text-slate-900 dark:text-slate-100'>
               Wrapped (Hook Wrapper)
             </h2>
-            <p className='text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed'>
-              Wrap your custom hook with <code>wrap()</code> to create a
-              container component. This isolates state updates to the
-              sub-tree under the render prop, avoiding top-level parent
-              re-renders.
+            <p className='mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
+              Wrap your custom hook with <code>wrap()</code> to create a container
+              component. This isolates state updates to the sub-tree under the render
+              prop, avoiding top-level parent re-renders.
             </p>
 
             <div className='mb-6'>
-              <p className='text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2'>
+              <p className='mb-2 text-xs font-bold tracking-wider text-slate-500 uppercase dark:text-slate-400'>
                 Code Snippet
               </p>
-              <pre className='text-xs bg-black/5 dark:bg-white/5 p-4 rounded-xl overflow-x-auto border border-slate-200 dark:border-slate-800 font-mono text-slate-900 dark:text-slate-100'>
+              <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
                 {`const CounterWrapper = wrap(useCounter);
  
  function MyComponent() {
@@ -131,7 +129,7 @@ function IndexComponent() {
 
           <Link
             to='/wrapped'
-            className='inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold cursor-pointer transition-all duration-180 w-full border border-teal-500/30 bg-teal-500/5 hover:bg-teal-500/10 text-slate-900 dark:text-slate-100 text-center no-underline mt-4'
+            className='mt-4 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-teal-500/30 bg-teal-500/5 px-4 py-2.5 text-center text-sm font-bold text-slate-900 no-underline transition-all duration-180 hover:bg-teal-500/10 dark:text-slate-100'
           >
             Explore Wrapped Demo →
           </Link>
@@ -139,78 +137,81 @@ function IndexComponent() {
       </section>
 
       {/* Resource Hub & Creator Profile */}
-      <div className='rise-in' style={enterStyle()}>
+      <div
+        className='rise-in'
+        style={enterStyle()}
+      >
         <Credits />
       </div>
 
       {/* Detailed Comparison Table */}
       <section
-        className='bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md backdrop-blur-md rounded-3xl p-6 sm:p-8 rise-in'
+        className='rise-in rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-md sm:p-8 dark:border-slate-800 dark:bg-slate-900/80'
         style={enterStyle()}
       >
-        <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-2'>
+        <p className='mb-2 text-[0.69rem] font-bold tracking-widest text-emerald-700 uppercase dark:text-emerald-400'>
           Performance & Capabilities
         </p>
-        <h3 className='font-serif text-xl font-bold mb-4 text-slate-900 dark:text-slate-100'>
+        <h3 className='mb-4 font-serif text-xl font-bold text-slate-900 dark:text-slate-100'>
           Comparison Matrix
         </h3>
-        <div className='overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-2xl bg-white/50 dark:bg-slate-900/50'>
+        <div className='overflow-x-auto rounded-2xl border border-slate-200 bg-white/50 dark:border-slate-800 dark:bg-slate-900/50'>
           <table className='w-full border-collapse text-slate-900 dark:text-slate-100'>
             <thead>
               <tr className='border-b border-slate-200 dark:border-slate-800'>
-                <th className='border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/80 px-4 py-3 text-left text-slate-900 dark:text-slate-100 font-bold'>
+                <th className='border-b border-slate-200 bg-slate-50/80 px-4 py-3 text-left font-bold text-slate-900 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-100'>
                   Feature / Capability
                 </th>
-                <th className='border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/80 px-4 py-3 text-left text-slate-900 dark:text-slate-100 font-bold'>
+                <th className='border-b border-slate-200 bg-slate-50/80 px-4 py-3 text-left font-bold text-slate-900 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-100'>
                   Standard Hook (Not Wrapped)
                 </th>
-                <th className='border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/80 px-4 py-3 text-left text-slate-900 dark:text-slate-100 font-bold'>
+                <th className='border-b border-slate-200 bg-slate-50/80 px-4 py-3 text-left font-bold text-slate-900 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-100'>
                   Wrapper Component (Wrapped)
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className='hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors'>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left font-semibold'>
+              <tr className='transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left font-semibold dark:border-slate-800'>
                   Re-render Scope
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-rose-600 dark:text-rose-400'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left text-rose-600 dark:border-slate-800 dark:text-rose-400'>
                   Parent Component & Children
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-teal-600 dark:text-teal-400 font-semibold'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left font-semibold text-teal-600 dark:border-slate-800 dark:text-teal-400'>
                   Isolated Render-Prop Sub-tree only
                 </td>
               </tr>
-              <tr className='hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors'>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left font-semibold'>
+              <tr className='transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left font-semibold dark:border-slate-800'>
                   Class Component Support
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-rose-600 dark:text-rose-400'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left text-rose-600 dark:border-slate-800 dark:text-rose-400'>
                   Unsupported (React constraint)
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-teal-600 dark:text-teal-400'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left text-teal-600 dark:border-slate-800 dark:text-teal-400'>
                   Supported (Standard JSX Component)
                 </td>
               </tr>
-              <tr className='hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors'>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left font-semibold'>
+              <tr className='transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left font-semibold dark:border-slate-800'>
                   Dynamic / Conditional Invocation
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-rose-600 dark:text-rose-400'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left text-rose-600 dark:border-slate-800 dark:text-rose-400'>
                   Unsupported (Violates Rules of Hooks)
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-teal-600 dark:text-teal-400'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left text-teal-600 dark:border-slate-800 dark:text-teal-400'>
                   Supported (Can be mounted conditionally or in loops)
                 </td>
               </tr>
-              <tr className='hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors'>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left font-semibold'>
+              <tr className='transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left font-semibold dark:border-slate-800'>
                   State Encapsulation
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-rose-600 dark:text-rose-400'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left text-rose-600 dark:border-slate-800 dark:text-rose-400'>
                   Leaked to page component scope
                 </td>
-                <td className='border-b border-slate-200 dark:border-slate-800 px-4 py-3 text-left text-teal-600 dark:text-teal-400'>
+                <td className='border-b border-slate-200 px-4 py-3 text-left text-teal-600 dark:border-slate-800 dark:text-teal-400'>
                   Self-contained inside the wrapper instance
                 </td>
               </tr>
@@ -221,44 +222,43 @@ function IndexComponent() {
 
       {/* Introduction & Installation */}
       <section
-        className='bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md backdrop-blur-md rounded-3xl p-6 sm:p-8 rise-in'
+        className='rise-in rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-md sm:p-8 dark:border-slate-800 dark:bg-slate-900/80'
         style={enterStyle()}
       >
-        <div className='grid gap-8 md:grid-cols-12 items-start'>
+        <div className='grid items-start gap-8 md:grid-cols-12'>
           <div className='md:col-span-5'>
-            <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-2'>
+            <p className='mb-2 text-[0.69rem] font-bold tracking-widest text-emerald-700 uppercase dark:text-emerald-400'>
               Get Started
             </p>
-            <h3 className='font-serif text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100'>
+            <h3 className='mb-4 font-serif text-2xl font-bold text-slate-900 dark:text-slate-100'>
               Introduction & Installation
             </h3>
-            <p className='text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4'>
-              <code>@bemedev/hook-wrapper</code> is a lightweight,
-              zero-dependency utility that lets you wrap any React hook
-              into a dedicated component.
+            <p className='mb-4 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
+              <code>@bemedev/hook-wrapper</code> is a lightweight, zero-dependency
+              utility that lets you wrap any React hook into a dedicated component.
             </p>
-            <p className='text-sm text-slate-500 dark:text-slate-400 leading-relaxed'>
-              This isolates hook lifecycle changes to a localized
-              render-prop sub-tree, avoiding top-level parent component
-              re-renders and boosting UI responsiveness.
+            <p className='text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
+              This isolates hook lifecycle changes to a localized render-prop
+              sub-tree, avoiding top-level parent component re-renders and boosting
+              UI responsiveness.
             </p>
           </div>
 
-          <div className='md:col-span-7 bg-slate-50 dark:bg-slate-950/20 border border-slate-200 dark:border-slate-800 rounded-2xl p-5'>
-            <div className='flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3 mb-4'>
-              <span className='text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400'>
+          <div className='rounded-2xl border border-slate-200 bg-slate-50 p-5 md:col-span-7 dark:border-slate-800 dark:bg-slate-950/20'>
+            <div className='mb-4 flex items-center justify-between border-b border-slate-200 pb-3 dark:border-slate-800'>
+              <span className='text-xs font-bold tracking-wider text-slate-500 uppercase dark:text-slate-400'>
                 Install Package
               </span>
-              <div className='flex gap-1.5 bg-slate-200/50 dark:bg-slate-800/60 p-0.5 rounded-lg text-xs'>
+              <div className='flex gap-1.5 rounded-lg bg-slate-200/50 p-0.5 text-xs dark:bg-slate-800/60'>
                 {(['pnpm', 'npm', 'yarn'] as const).map(pm => (
                   <button
                     key={pm}
                     type='button'
                     onClick={() => setPkgManager(pm)}
-                    className={`px-2.5 py-1 rounded-md font-medium transition-all cursor-pointer ${
+                    className={`cursor-pointer rounded-md px-2.5 py-1 font-medium transition-all ${
                       pkgManager === pm
-                        ? 'bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm'
-                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                        ? 'bg-white text-emerald-600 shadow-sm dark:bg-slate-900 dark:text-emerald-400'
+                        : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100'
                     }`}
                   >
                     {pm}
@@ -267,15 +267,12 @@ function IndexComponent() {
               </div>
             </div>
 
-            <div className='relative group'>
-              <pre className='text-xs font-mono bg-black/5 dark:bg-black/30 p-4 pr-12 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 overflow-x-auto min-h-[48px] flex items-center'>
+            <div className='group relative'>
+              <pre className='flex min-h-[48px] items-center overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 pr-12 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-black/30 dark:text-slate-100'>
                 <code>
-                  {pkgManager === 'pnpm' &&
-                    'pnpm add @bemedev/hook-wrapper'}
-                  {pkgManager === 'npm' &&
-                    'npm install @bemedev/hook-wrapper'}
-                  {pkgManager === 'yarn' &&
-                    'yarn add @bemedev/hook-wrapper'}
+                  {pkgManager === 'pnpm' && 'pnpm add @bemedev/hook-wrapper'}
+                  {pkgManager === 'npm' && 'npm install @bemedev/hook-wrapper'}
+                  {pkgManager === 'yarn' && 'yarn add @bemedev/hook-wrapper'}
                 </code>
               </pre>
               <button
@@ -291,7 +288,7 @@ function IndexComponent() {
                   setCopied(true);
                   setTimeout(() => setCopied(false), 2000);
                 }}
-                className='absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer'
+                className='absolute top-1/2 right-2.5 -translate-y-1/2 cursor-pointer rounded-lg border border-slate-200 bg-white/80 p-2 text-slate-500 opacity-0 transition-all group-hover:opacity-100 hover:text-slate-900 focus:opacity-100 dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-400 dark:hover:text-slate-100'
                 title='Copy install command'
               >
                 {copied ? (
@@ -331,33 +328,33 @@ function IndexComponent() {
 
       {/* How-to Use */}
       <section
-        className='bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md backdrop-blur-md rounded-3xl p-6 sm:p-8 rise-in'
+        className='rise-in rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-md sm:p-8 dark:border-slate-800 dark:bg-slate-900/80'
         style={enterStyle()}
       >
-        <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-2'>
+        <p className='mb-2 text-[0.69rem] font-bold tracking-widest text-emerald-700 uppercase dark:text-emerald-400'>
           Implementation Guide
         </p>
-        <h3 className='font-serif text-2xl font-bold mb-6 text-slate-900 dark:text-slate-100'>
+        <h3 className='mb-6 font-serif text-2xl font-bold text-slate-900 dark:text-slate-100'>
           How-to Use & Examples
         </h3>
 
         <div className='grid gap-6 md:grid-cols-2'>
           {/* Step 1 */}
-          <div className='flex flex-col h-full justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/30 p-5'>
+          <div className='flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white/50 p-5 dark:border-slate-800 dark:bg-slate-950/30'>
             <div>
-              <div className='flex items-center gap-2 mb-3'>
-                <span className='flex items-center justify-center size-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold text-xs'>
+              <div className='mb-3 flex items-center gap-2'>
+                <span className='flex size-6 items-center justify-center rounded-full bg-emerald-500/10 text-xs font-bold text-emerald-600 dark:text-emerald-400'>
                   1
                 </span>
-                <span className='font-bold text-slate-900 dark:text-slate-100 text-sm'>
+                <span className='text-sm font-bold text-slate-900 dark:text-slate-100'>
                   Define a Custom Hook
                 </span>
               </div>
-              <p className='text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed'>
-                Write your hook just like any normal React hook, returning
-                states and actions.
+              <p className='mb-4 text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
+                Write your hook just like any normal React hook, returning states and
+                actions.
               </p>
-              <pre className='text-xs bg-black/5 dark:bg-white/5 p-4 rounded-xl overflow-x-auto border border-slate-200 dark:border-slate-800 font-mono text-slate-900 dark:text-slate-100'>
+              <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
                 {`import { useState } from 'react';
 
 export const useCounter = ({ step = 1 }: { step?: number } = {}) => {
@@ -372,22 +369,22 @@ export const useCounter = ({ step = 1 }: { step?: number } = {}) => {
           </div>
 
           {/* Step 2 */}
-          <div className='flex flex-col h-full justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-950/30 p-5'>
+          <div className='flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white/50 p-5 dark:border-slate-800 dark:bg-slate-950/30'>
             <div>
-              <div className='flex items-center gap-2 mb-3'>
-                <span className='flex items-center justify-center size-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold text-xs'>
+              <div className='mb-3 flex items-center gap-2'>
+                <span className='flex size-6 items-center justify-center rounded-full bg-emerald-500/10 text-xs font-bold text-emerald-600 dark:text-emerald-400'>
                   2
                 </span>
-                <span className='font-bold text-slate-900 dark:text-slate-100 text-sm'>
+                <span className='text-sm font-bold text-slate-900 dark:text-slate-100'>
                   Wrap and Render the Hook
                 </span>
               </div>
-              <p className='text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed'>
-                Pass your custom hook to the <code>wrap()</code> function.
-                Mount the returned wrapper, passing hook parameters as
-                props and rendering the UI.
+              <p className='mb-4 text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
+                Pass your custom hook to the <code>wrap()</code> function. Mount the
+                returned wrapper, passing hook parameters as props and rendering the
+                UI.
               </p>
-              <pre className='text-xs bg-black/5 dark:bg-white/5 p-4 rounded-xl overflow-x-auto border border-slate-200 dark:border-slate-800 font-mono text-slate-900 dark:text-slate-100'>
+              <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
                 {`import { wrap } from '@bemedev/hook-wrapper';
 import { useCounter } from './useCounter';
 
@@ -413,55 +410,55 @@ export const Demo = () => (
 
       {/* API Reference */}
       <section
-        className='bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-md backdrop-blur-md rounded-3xl p-6 sm:p-8 rise-in'
+        className='rise-in rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-md sm:p-8 dark:border-slate-800 dark:bg-slate-900/80'
         style={enterStyle()}
       >
-        <p className='text-[0.69rem] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-2'>
+        <p className='mb-2 text-[0.69rem] font-bold tracking-widest text-emerald-700 uppercase dark:text-emerald-400'>
           Signature & API
         </p>
-        <h3 className='font-serif text-2xl font-bold mb-4 text-slate-900 dark:text-slate-100'>
+        <h3 className='mb-4 font-serif text-2xl font-bold text-slate-900 dark:text-slate-100'>
           API Reference
         </h3>
-        <p className='text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6'>
-          The core helper exposes a single, straightforward signature to
-          encapsulate your logic.
+        <p className='mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
+          The core helper exposes a single, straightforward signature to encapsulate
+          your logic.
         </p>
 
-        <div className='border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50/50 dark:bg-slate-950/20'>
-          <div className='bg-slate-100/80 dark:bg-slate-800/80 px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between'>
-            <span className='font-mono font-bold text-sm text-slate-900 dark:text-slate-100'>
+        <div className='overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-950/20'>
+          <div className='flex items-center justify-between border-b border-slate-200 bg-slate-100/80 px-5 py-3.5 dark:border-slate-800 dark:bg-slate-800/80'>
+            <span className='font-mono text-sm font-bold text-slate-900 dark:text-slate-100'>
               wrap(hook)
             </span>
-            <span className='text-[10px] uppercase font-bold tracking-widest bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2.5 py-0.5 rounded-full'>
+            <span className='rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold tracking-widest text-emerald-600 uppercase dark:text-emerald-400'>
               Core API
             </span>
           </div>
 
-          <div className='p-5 space-y-4 text-sm'>
+          <div className='space-y-4 p-5 text-sm'>
             <div>
-              <p className='font-semibold text-slate-950 dark:text-slate-50 mb-1'>
+              <p className='mb-1 font-semibold text-slate-950 dark:text-slate-50'>
                 Parameters
               </p>
-              <ul className='list-disc pl-5 space-y-1 text-slate-500 dark:text-slate-400 text-xs'>
+              <ul className='list-disc space-y-1 pl-5 text-xs text-slate-500 dark:text-slate-400'>
                 <li>
-                  <code className='font-mono text-emerald-600 dark:text-emerald-400 font-semibold'>
+                  <code className='font-mono font-semibold text-emerald-600 dark:text-emerald-400'>
                     hook
                   </code>
-                  : The target React hook function (e.g.{' '}
-                  <code>useMyHook</code>) you wish to wrap.
+                  : The target React hook function (e.g. <code>useMyHook</code>) you
+                  wish to wrap.
                 </li>
               </ul>
             </div>
 
-            <div className='pt-3 border-t border-slate-200 dark:border-slate-800'>
-              <p className='font-semibold text-slate-950 dark:text-slate-50 mb-1'>
+            <div className='border-t border-slate-200 pt-3 dark:border-slate-800'>
+              <p className='mb-1 font-semibold text-slate-950 dark:text-slate-50'>
                 Returns
               </p>
-              <p className='text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-2'>
-                A standard React component that is type-safe and takes the
-                following props:
+              <p className='mb-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
+                A standard React component that is type-safe and takes the following
+                props:
               </p>
-              <ul className='list-disc pl-5 space-y-2 text-slate-500 dark:text-slate-400 text-xs'>
+              <ul className='list-disc space-y-2 pl-5 text-xs text-slate-500 dark:text-slate-400'>
                 <li>
                   <strong className='text-slate-900 dark:text-slate-100'>
                     Hook Arguments as Props
@@ -472,9 +469,9 @@ export const Demo = () => (
                   <strong className='text-slate-900 dark:text-slate-100'>
                     render
                   </strong>
-                  : A callback function prop. It receives the values
-                  returned by the hook (as its single parameter) and
-                  returns the JSX elements to render.
+                  : A callback function prop. It receives the values returned by the
+                  hook (as its single parameter) and returns the JSX elements to
+                  render.
                 </li>
               </ul>
             </div>
