@@ -1,4 +1,9 @@
-import { fireEvent, render, screen, cleanup } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+  cleanup,
+} from '@testing-library/react';
 import { useState } from 'react';
 
 import { wrap, useHook } from './wrapper';
@@ -89,7 +94,8 @@ describe('TESTS', () => {
 
     afterAll(cleanup);
 
-    const directCount = () => screen.getByTestId('direct-count').textContent;
+    const directCount = () =>
+      screen.getByTestId('direct-count').textContent;
     const wrappedCount = () => {
       return screen.getByTestId('wrapped-count').textContent;
     };
@@ -205,7 +211,8 @@ describe('TESTS', () => {
 
     afterAll(cleanup);
 
-    const directCount = () => screen.getByTestId('direct-count').textContent;
+    const directCount = () =>
+      screen.getByTestId('direct-count').textContent;
     const wrappedCount = () => {
       return screen.getByTestId('wrapped-count').textContent;
     };

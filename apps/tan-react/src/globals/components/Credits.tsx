@@ -27,8 +27,8 @@ export const Credits = () => (
             </span>
           </div>
           <p className='text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
-            Install the package directly, view bundle size limits, and download
-            statistics on the official npm registry page.
+            Install the package directly, view bundle size limits, and
+            download statistics on the official npm registry page.
           </p>
         </div>
         <div className='mt-4 flex items-center text-xs font-semibold text-red-600 group-hover:underline dark:text-red-400'>
@@ -59,8 +59,8 @@ export const Credits = () => (
             </span>
           </div>
           <p className='text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
-            Explore the source code, open issues or feature requests, and contribute
-            to the monorepo hosting this project.
+            Explore the source code, open issues or feature requests, and
+            contribute to the monorepo hosting this project.
           </p>
         </div>
         <div className='mt-4 flex items-center text-xs font-semibold text-teal-600 group-hover:underline dark:text-teal-400'>
@@ -93,8 +93,8 @@ export const Credits = () => (
             </div>
           </div>
           <p className='text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
-            Crafting clean, lightweight, and performance-focused React design
-            patterns and state utilities.
+            Crafting clean, lightweight, and performance-focused React
+            design patterns and state utilities.
           </p>
         </div>
         <div className='mt-4 flex flex-wrap gap-2 border-t border-slate-200/50 pt-2 text-sm dark:border-slate-800/50'>

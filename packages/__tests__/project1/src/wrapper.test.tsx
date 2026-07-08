@@ -1,5 +1,10 @@
 import { wrap } from '@bemedev/hook-wrapper';
-import { fireEvent, render, screen, cleanup } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+  cleanup,
+} from '@testing-library/react';
 import { useState } from 'react';
 
 describe('hook-wrapper tests', () => {

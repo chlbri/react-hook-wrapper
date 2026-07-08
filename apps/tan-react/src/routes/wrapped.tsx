@@ -24,10 +24,11 @@ export const Route = createFileRoute('/wrapped')({
             Wrapped (Hook Wrapper Component)
           </h1>
           <p className='max-w-3xl text-slate-500 dark:text-slate-300'>
-            In this page, hooks are wrapped inside `<code>wrap()</code>` or `
-            <code>useHook()</code>`. Notice that updating counters or resizing the
-            browser window increments <em>only</em> that specific component's
-            sub-renders. The parent page component render count remains at 1!
+            In this page, hooks are wrapped inside `<code>wrap()</code>` or
+            `<code>useHook()</code>`. Notice that updating counters or
+            resizing the browser window increments <em>only</em> that
+            specific component's sub-renders. The parent page component
+            render count remains at 1!
           </p>
           <ClickOn steps={[10, 5]} />
         </section>
@@ -44,8 +45,8 @@ export const Route = createFileRoute('/wrapped')({
                 1. Stateful Counters
               </h3>
               <p className='mb-6 text-xs text-slate-500 dark:text-slate-400'>
-                Clicking these buttons updates local state inside the wrapper
-                component, keeping the parent page unaffected.
+                Clicking these buttons updates local state inside the
+                wrapper component, keeping the parent page unaffected.
               </p>
 
               <div className='space-y-4'>
@@ -68,8 +69,8 @@ export const Route = createFileRoute('/wrapped')({
                 2. Window Event Listener
               </h3>
               <p className='mb-6 text-xs text-slate-500 dark:text-slate-400'>
-                Resizing the browser window triggers events that update only the
-                width sub-tree, avoiding full-page paint overhead.
+                Resizing the browser window triggers events that update
+                only the width sub-tree, avoiding full-page paint overhead.
               </p>
 
               <WindowWidthWrapper render={WindowWidth} />

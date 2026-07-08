@@ -12,15 +12,19 @@ function getInitialMode(): ThemeMode {
   if (typeof window === 'undefined') return 'auto';
   const stored = window.localStorage.getItem('theme');
 
-  const check = stored === 'light' || stored === 'dark' || stored === 'auto';
+  const check =
+    stored === 'light' || stored === 'dark' || stored === 'auto';
 
   if (check) return stored;
   return 'auto';
 }
 
 const applyThemeMode = (mode: ThemeMode) => {
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const resolved = mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
+  const prefersDark = window.matchMedia(
+    '(prefers-color-scheme: dark)',
+  ).matches;
+  const resolved =
+    mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
 
   document.documentElement.classList.remove('light', 'dark');
   document.documentElement.classList.add(resolved);
@@ -71,7 +75,11 @@ export const ThemeToggle = () => {
       : `Theme mode: ${mode}. Click to switch mode.`;
 
   const text =
-    mode === 'auto' ? 'auto  ❤️' : mode === 'dark' ? 'dark  🌙' : 'light  ☀️';
+    mode === 'auto'
+      ? 'auto  ❤️'
+      : mode === 'dark'
+        ? 'dark  🌙'
+        : 'light  ☀️';
 
   return (
     <button

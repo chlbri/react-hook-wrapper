@@ -1,24 +1,25 @@
 # @bemedev/hook-wrapper
 
-A lightweight utility to wrap React hooks and render them in a dedicated wrapper
-component. This isolates hook-driven updates, preventing unnecessary parent component
-rerenders and optimizing React application performance.
+A lightweight utility to wrap React hooks and render them in a dedicated
+wrapper component. This isolates hook-driven updates, preventing
+unnecessary parent component rerenders and optimizing React application
+performance.
 
 <br/>
 
 ## Why use @bemedev/hook-wrapper?
 
-In standard React development, calling a hook inside a parent component causes the
-entire parent component (and all its children) to rerender whenever the hook's state
-changes.
+In standard React development, calling a hook inside a parent component
+causes the entire parent component (and all its children) to rerender
+whenever the hook's state changes.
 
-By wrapping a custom hook with `wrap` or `useHook`, you create a wrapper component
-that:
+By wrapping a custom hook with `wrap` or `useHook`, you create a wrapper
+component that:
 
 1. Calls the hook internally.
 2. Accepts hook arguments as props.
-3. Exposes a `render` prop to display the UI, localizing hook rerenders to the render
-   callback rather than triggering a parent-level update.
+3. Exposes a `render` prop to display the UI, localizing hook rerenders to
+   the render callback rather than triggering a parent-level update.
 
 <br/>
 
@@ -87,8 +88,8 @@ export const Demo = () => {
 
 ### `wrap(hook)` / `useHook(hook)`
 
-Wraps a custom hook and returns a component that renders it (`useHook` is an alias of
-`wrap`).
+Wraps a custom hook and returns a component that renders it (`useHook` is
+an alias of `wrap`).
 
 #### Parameters
 
@@ -99,8 +100,8 @@ Wraps a custom hook and returns a component that renders it (`useHook` is an ali
 A React component that accepts:
 
 - Props matching the arguments of the wrapped hook.
-- A `render` function prop that receives the hook's return value and returns a React
-  element.
+- A `render` function prop that receives the hook's return value and
+  returns a React element.
 
 <br/>
 

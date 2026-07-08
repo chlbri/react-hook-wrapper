@@ -7,7 +7,9 @@ import { bumper } from '#/globals/hooks/bumper';
 export const Route = createFileRoute('/')({ component: IndexComponent });
 
 function IndexComponent() {
-  const [pkgManager, setPkgManager] = useState<'pnpm' | 'npm' | 'yarn'>('pnpm');
+  const [pkgManager, setPkgManager] = useState<'pnpm' | 'npm' | 'yarn'>(
+    'pnpm',
+  );
   const [copied, setCopied] = useState(false);
   const enterStyle = bumper(200);
 
@@ -25,11 +27,11 @@ function IndexComponent() {
           Decouple stateful logic from UI rendering.
         </h1>
         <p className='mb-8 max-w-3xl text-base leading-relaxed text-slate-500 sm:text-lg dark:text-slate-400'>
-          Custom hooks are React's primary way to share stateful behavior. However,
-          calling them directly at the root of a large page component forces the
-          entire page to re-render whenever the hook updates. The{' '}
-          <strong>Hook Wrapper Pattern</strong> compiles hooks into reusable
-          components to isolate re-render performance.
+          Custom hooks are React's primary way to share stateful behavior.
+          However, calling them directly at the root of a large page
+          component forces the entire page to re-render whenever the hook
+          updates. The <strong>Hook Wrapper Pattern</strong> compiles hooks
+          into reusable components to isolate re-render performance.
         </p>
       </section>
 
@@ -51,9 +53,9 @@ function IndexComponent() {
               Not Wrapped (Direct Hook)
             </h2>
             <p className='mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
-              Invoke hooks directly at the root of your component. Easy to write and
-              straightforward for simple components, but ties the entire component's
-              lifecycle to the hook's state transitions.
+              Invoke hooks directly at the root of your component. Easy to
+              write and straightforward for simple components, but ties the
+              entire component's lifecycle to the hook's state transitions.
             </p>
 
             <div className='mb-6'>
@@ -101,9 +103,9 @@ function IndexComponent() {
             </h2>
             <p className='mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
               Wrap your custom hook with <code>wrap()</code> or{' '}
-              <code>useHook()</code> to create a container component. This isolates
-              state updates to the sub-tree under the render prop, avoiding top-level
-              parent re-renders.
+              <code>useHook()</code> to create a container component. This
+              isolates state updates to the sub-tree under the render prop,
+              avoiding top-level parent re-renders.
             </p>
 
             <div className='mb-6'>
@@ -237,13 +239,14 @@ const CounterWrapper = useHook(useCounter);
               Introduction & Installation
             </h3>
             <p className='mb-4 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
-              <code>@bemedev/hook-wrapper</code> is a lightweight, zero-dependency
-              utility that lets you wrap any React hook into a dedicated component.
+              <code>@bemedev/hook-wrapper</code> is a lightweight,
+              zero-dependency utility that lets you wrap any React hook
+              into a dedicated component.
             </p>
             <p className='text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
-              This isolates hook lifecycle changes to a localized render-prop
-              sub-tree, avoiding top-level parent component re-renders and boosting
-              UI responsiveness.
+              This isolates hook lifecycle changes to a localized
+              render-prop sub-tree, avoiding top-level parent component
+              re-renders and boosting UI responsiveness.
             </p>
           </div>
 
@@ -273,9 +276,12 @@ const CounterWrapper = useHook(useCounter);
             <div className='group relative'>
               <pre className='flex min-h-[48px] items-center overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 pr-12 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-black/30 dark:text-slate-100'>
                 <code>
-                  {pkgManager === 'pnpm' && 'pnpm add @bemedev/hook-wrapper'}
-                  {pkgManager === 'npm' && 'npm install @bemedev/hook-wrapper'}
-                  {pkgManager === 'yarn' && 'yarn add @bemedev/hook-wrapper'}
+                  {pkgManager === 'pnpm' &&
+                    'pnpm add @bemedev/hook-wrapper'}
+                  {pkgManager === 'npm' &&
+                    'npm install @bemedev/hook-wrapper'}
+                  {pkgManager === 'yarn' &&
+                    'yarn add @bemedev/hook-wrapper'}
                 </code>
               </pre>
               <button
@@ -354,8 +360,8 @@ const CounterWrapper = useHook(useCounter);
                 </span>
               </div>
               <p className='mb-4 text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
-                Write your hook just like any normal React hook, returning states and
-                actions.
+                Write your hook just like any normal React hook, returning
+                states and actions.
               </p>
               <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
                 {`import { useState } from 'react';
@@ -384,8 +390,9 @@ export const useCounter = ({ step = 1 }: { step?: number } = {}) => {
               </div>
               <p className='mb-4 text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
                 Pass your custom hook to the <code>wrap()</code> or{' '}
-                <code>useHook()</code> function. Mount the returned wrapper, passing
-                hook parameters as props and rendering the UI.
+                <code>useHook()</code> function. Mount the returned
+                wrapper, passing hook parameters as props and rendering the
+                UI.
               </p>
               <pre className='overflow-x-auto rounded-xl border border-slate-200 bg-black/5 p-4 font-mono text-xs text-slate-900 dark:border-slate-800 dark:bg-white/5 dark:text-slate-100'>
                 {`import { useHook } from '@bemedev/hook-wrapper';
@@ -423,8 +430,8 @@ export const Demo = () => (
           API Reference
         </h3>
         <p className='mb-6 text-sm leading-relaxed text-slate-500 dark:text-slate-400'>
-          The core helper exposes a single, straightforward signature to encapsulate
-          your logic.
+          The core helper exposes a single, straightforward signature to
+          encapsulate your logic.
         </p>
 
         <div className='overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-950/20'>
@@ -439,9 +446,9 @@ export const Demo = () => (
 
           <div className='space-y-4 p-5 text-sm'>
             <p className='text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
-              Both exports are functionally identical. <code>useHook</code> is
-              provided as a semantic alternative for developers preferring standard
-              hook naming conventions.
+              Both exports are functionally identical. <code>useHook</code>{' '}
+              is provided as a semantic alternative for developers
+              preferring standard hook naming conventions.
             </p>
             <div>
               <p className='mb-1 font-semibold text-slate-950 dark:text-slate-50'>
@@ -452,8 +459,8 @@ export const Demo = () => (
                   <code className='font-mono font-semibold text-emerald-600 dark:text-emerald-400'>
                     hook
                   </code>
-                  : The target React hook function (e.g. <code>useMyHook</code>) you
-                  wish to wrap.
+                  : The target React hook function (e.g.{' '}
+                  <code>useMyHook</code>) you wish to wrap.
                 </li>
               </ul>
             </div>
@@ -463,8 +470,8 @@ export const Demo = () => (
                 Returns
               </p>
               <p className='mb-2 text-xs leading-relaxed text-slate-500 dark:text-slate-400'>
-                A standard React component that is type-safe and takes the following
-                props:
+                A standard React component that is type-safe and takes the
+                following props:
               </p>
               <ul className='list-disc space-y-2 pl-5 text-xs text-slate-500 dark:text-slate-400'>
                 <li>
@@ -477,9 +484,9 @@ export const Demo = () => (
                   <strong className='text-slate-900 dark:text-slate-100'>
                     render
                   </strong>
-                  : A callback function prop. It receives the values returned by the
-                  hook (as its single parameter) and returns the JSX elements to
-                  render.
+                  : A callback function prop. It receives the values
+                  returned by the hook (as its single parameter) and
+                  returns the JSX elements to render.
                 </li>
               </ul>
             </div>

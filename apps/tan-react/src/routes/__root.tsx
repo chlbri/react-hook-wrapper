@@ -1,5 +1,9 @@
 import { TanStackDevtools } from '@tanstack/react-devtools';
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router';
+import {
+  HeadContent,
+  Scripts,
+  createRootRoute,
+} from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 
 import Footer from '../globals/components/Footer';
@@ -28,7 +32,9 @@ export const Route = createRootRoute({
         suppressHydrationWarning
       >
         <head>
-          <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+          <script
+            dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+          />
           <HeadContent />
         </head>
         <body className='bg-zinc-100 font-sans wrap-anywhere text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-100'>
@@ -40,7 +46,10 @@ export const Route = createRootRoute({
           <TanStackDevtools
             config={{ position: 'bottom-right' }}
             plugins={[
-              { name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel /> },
+              {
+                name: 'Tanstack Router',
+                render: <TanStackRouterDevtoolsPanel />,
+              },
             ]}
           />
           <Scripts />

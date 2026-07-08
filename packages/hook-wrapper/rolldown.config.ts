@@ -1,3 +1,6 @@
 import { defineConfig } from '@bemedev/dev-utils/rolldown';
 
-export default defineConfig.bemedev({ sourcemap: true, declarationMap: true });
+export default defineConfig.bemedev({
+  sourcemap: true,
+  declarationMap: true,
+});

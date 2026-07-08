@@ -7,7 +7,7 @@ export default defineConfig({
   htmlWhitespaceSensitivity: 'css',
   jsxSingleQuote: true,
   bracketSameLine: false,
-  printWidth: 85,
+  printWidth: 75,
   proseWrap: 'always',
   singleAttributePerLine: true,
   objectWrap: 'collapse',
@@ -23,5 +23,4 @@ export default defineConfig({
   sortPackageJson: false,
   ignorePatterns: ['node_modules', 'publish', 'publish_npm', 'lib'],
   jsdoc: true,
-  
 });

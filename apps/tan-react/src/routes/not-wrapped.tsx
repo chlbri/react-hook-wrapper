@@ -24,8 +24,8 @@ export const Route = createFileRoute('/not-wrapped')({
           </h1>
           <p className='max-w-3xl text-slate-500 dark:text-slate-300'>
             In this page, hooks are called directly in the body of the main
-            component. Notice how any interaction below immediately triggers a full
-            parent component re-render.
+            component. Notice how any interaction below immediately
+            triggers a full parent component re-render.
           </p>
           <ClickOn steps={[counting1.step, counting2.step]} />
         </section>
@@ -42,8 +42,8 @@ export const Route = createFileRoute('/not-wrapped')({
                 1. Stateful Counters
               </h3>
               <p className='mb-6 text-xs text-slate-500 dark:text-slate-400'>
-                Clicking these buttons updates local state, causing the entire page
-                to re-render.
+                Clicking these buttons updates local state, causing the
+                entire page to re-render.
               </p>
 
               <div className='space-y-4'>
@@ -60,8 +60,9 @@ export const Route = createFileRoute('/not-wrapped')({
                 2. Window Event Listener
               </h3>
               <p className='mb-6 text-xs text-slate-500 dark:text-slate-400'>
-                Resizing the browser window triggers event listeners that update the
-                screen state, re-rendering the whole page on every pixel change.
+                Resizing the browser window triggers event listeners that
+                update the screen state, re-rendering the whole page on
+                every pixel change.
               </p>
 
               <WindowWidth {...measure} />

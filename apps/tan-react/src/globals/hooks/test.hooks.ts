@@ -17,7 +17,12 @@ export const useWindow = <T = Window>(
   selector: (window: Window) => T = identity,
 ) => {
   const [selected, setSelected] = useState<T>();
-  const events = ['online', 'offline', 'resize', 'orientationchange'] as const;
+  const events = [
+    'online',
+    'offline',
+    'resize',
+    'orientationchange',
+  ] as const;
 
   useLayoutEffect(() => {
     const { addEventListener, removeEventListener } = window;
