@@ -9,13 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WrappedRouteImport } from './routes/wrapped'
-import { Route as NotWrappedRouteImport } from './routes/not-wrapped'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as NotWrappedRouteImport } from './routes/not-wrapped'
+import { Route as WrappedRouteImport } from './routes/wrapped'
 
-const WrappedRoute = WrappedRouteImport.update({
-  id: '/wrapped',
-  path: '/wrapped',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotWrappedRoute = NotWrappedRouteImport.update({
@@ -23,9 +23,9 @@ const NotWrappedRoute = NotWrappedRouteImport.update({
   path: '/not-wrapped',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const WrappedRoute = WrappedRouteImport.update({
+  id: '/wrapped',
+  path: '/wrapped',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -61,11 +61,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wrapped': {
-      id: '/wrapped'
-      path: '/wrapped'
-      fullPath: '/wrapped'
-      preLoaderRoute: typeof WrappedRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/not-wrapped': {
@@ -75,11 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotWrappedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/wrapped': {
+      id: '/wrapped'
+      path: '/wrapped'
+      fullPath: '/wrapped'
+      preLoaderRoute: typeof WrappedRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

@@ -1,7 +1,7 @@
-import { shared } from '@bemedev/shared-vitest';
+import { defineProject } from '@bemedev/dev-utils/vitest-extended';
 import viteReact from '@vitejs/plugin-react';
 
-export default shared({
+export default defineProject({
   plugins: [viteReact()],
   test: {
     name: 'core',

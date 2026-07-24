@@ -1,9 +1,10 @@
 import { Link } from '@tanstack/react-router';
+import type { FC } from 'react';
 
 import { MyGithub } from './MyGithub';
 import { ThemeToggle } from './ThemeToggle';
 
-export default function Header() {
+export const Header: FC = () => {
   return (
     <header className='fixed top-0 z-50 w-full border-b border-slate-200 bg-white/80 px-4 backdrop-blur-lg dark:border-slate-800 dark:bg-slate-900/80'>
       <nav className='mx-auto flex w-full max-w-5xl flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4'>
@@ -73,4 +74,4 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};

@@ -1,4 +1,3 @@
-// hookWrapperFactory.tsx
 import { type JSX } from 'react';
 
 import type { Hook, WrapperProps } from './types';

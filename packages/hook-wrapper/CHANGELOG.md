@@ -3,6 +3,24 @@
 <details>
 <summary>
 
+## **[0.3.0] - 24/07/2026** => _15:08_
+
+</summary>
+
+- Add homepage URL and Node engine requirement (`>=24`)
+- Remove `@bemedev/shared-vitest` devDependency
+- Update devDependencies: `@bemedev/dev-utils` to `^1.1.0`, `typescript` to
+  `^7.0.2`, `rolldown` to `^1.2.0`, `react` and `react-dom` to `^19.2.8`,
+  `@vitejs/plugin-react` to `^6.0.4`
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.2.0] - 07/07/2026** => _16:20_
 
 </summary>
