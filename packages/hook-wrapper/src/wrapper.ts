@@ -1,10 +1,10 @@
-import { type JSX } from 'react';
+import { type ReactNode } from 'react';
 
 import type { Hook, WrapperProps } from './types';
 
 export type Wrapper_F = <const T extends Hook>(
   hook: T,
-) => (props: WrapperProps<T>) => JSX.Element;
+) => (props: WrapperProps<T>) => ReactNode;
 
 export const wrap: Wrapper_F = hook => {
   return props => {
