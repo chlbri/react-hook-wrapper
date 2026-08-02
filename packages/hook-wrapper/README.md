@@ -103,6 +103,19 @@ A React component that accepts:
 - A `render` function prop that receives the hook's return value and
   returns a React element.
 
+### `wrap.noParams(hook, render)`
+
+Helper for wrapping hooks that accept no parameters. Returns a component function directly without requiring props at render time.
+
+#### Parameters
+
+- `hook`: The parameterless React hook function to wrap.
+- `render`: A function receiving the hook's return value and returning a React element.
+
+#### Returns
+
+A parameterless React component function `() => ReactNode`.
+
 <br/>
 
 ## License

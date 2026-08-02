@@ -3,6 +3,21 @@
 <details>
 <summary>
 
+## **[0.4.0] - 02/08/2026** => _03:15_
+
+</summary>
+
+- Add `wrap.noParams` implementation and overload for zero-parameter hooks
+- Add `EmptyHook` type definition
+- <u>Test coverage **_100%_**</u>
+
+</details>
+
+<br/>
+
+<details>
+<summary>
+
 ## **[0.3.0] - 24/07/2026** => _15:08_
 
 </summary>

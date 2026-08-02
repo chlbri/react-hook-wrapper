@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 export type EmptyObject = {};
 
 export type Hook<P extends object = object, R = any> = (arg: P) => R;
+export type EmptyHook<R = any> = () => R;
 
 export type _WrapperProps<
   T extends Hook,
