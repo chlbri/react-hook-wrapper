@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 // oxlint-disable-next-line typescript/no-empty-object-type
 export type EmptyObject = {};
 
-export type Hook<P = any, R = any> = (arg: P) => R;
+export type Hook<P extends object = object, R = any> = (arg: P) => R;
 
 export type _WrapperProps<
   T extends Hook,
