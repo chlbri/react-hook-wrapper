@@ -26,8 +26,8 @@
     "@tanstack/react-router-devtools": "latest",
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "latest",
-    "@tanstack/router-plugin": "^1.168.23",
-    "lucide-react": "^1.28.0",
+    "@tanstack/router-plugin": "^1.168.35",
+    "lucide-react": "^1.38.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3"
@@ -35,18 +35,18 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/devtools-vite": "latest",
-    "@tanstack/router-cli": "^1.167.21",
+    "@tanstack/router-cli": "^1.167.33",
     "@testing-library/dom": "^10.4.1",
-    "@testing-library/react": "^16.3.2",
-    "@types/node": "^26.1.2",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.4.0",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "@vitejs/plugin-react": "^6.0.5",
+    "@types/react-dom": "^19.2.5",
+    "@vitejs/plugin-react": "^6.1.1",
     "jsdom": "^30.0.1",
     "nitro": "3.0.260610-beta",
     "typescript": "^7.0.2",
-    "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

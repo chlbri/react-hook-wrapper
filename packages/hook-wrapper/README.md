@@ -105,12 +105,14 @@ A React component that accepts:
 
 ### `wrap.noParams(hook, render)`
 
-Helper for wrapping hooks that accept no parameters. Returns a component function directly without requiring props at render time.
+Helper for wrapping hooks that accept no parameters. Returns a component
+function directly without requiring props at render time.
 
 #### Parameters
 
 - `hook`: The parameterless React hook function to wrap.
-- `render`: A function receiving the hook's return value and returning a React element.
+- `render`: A function receiving the hook's return value and returning a
+  React element.
 
 #### Returns
 
