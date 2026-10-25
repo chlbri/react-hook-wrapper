@@ -55,7 +55,7 @@
     "@size-limit/file": "^14.1.0",
     "@types/node": "^26.6.3",
     "@vitest/coverage-v8": "^5.0.3",
-    "@vitest/ui": "5.0.3",
+    "@vitest/ui": "5.0.5",
     "glob": "^13.0.6",
     "globals": "^17.13.0",
     "husky": "^9.1.7",
