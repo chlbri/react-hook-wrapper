@@ -56,6 +56,7 @@ export const useCounter = ({ step = 1 }: { step?: number } = {}) => {
 
 ```tsx
 import { wrap } from '@bemedev/hook-wrapper';
+
 import { useCounter } from './useCounter';
 
 // Wrap the hook to get a wrapper component
