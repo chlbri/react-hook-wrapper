@@ -7,10 +7,7 @@ export const ClickOn = ({ steps }: Props) => (
     <span>Click on</span>
     <div className='flex items-center gap-4'>
       {steps.map((step, key) => (
-        <CounterButton
-          key={key}
-          step={step}
-        />
+        <CounterButton key={key} step={step} />
       ))}
     </div>
     <span>buttons to see the difference on rerenders.</span>

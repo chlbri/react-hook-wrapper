@@ -1,6 +1,7 @@
-import { type ReactNode } from 'react';
+import { createElement, type ReactNode } from 'react';
 
 import type { EmptyHook, Hook, WrapperProps } from './types';
+import { Wrapper } from './wrapper.component';
 
 export type Wrapper_F = {
   <const T extends Hook>(hook: T): (props: WrapperProps<T>) => ReactNode;
@@ -20,8 +21,7 @@ export const wrap: Wrapper_F = hook => {
 
 wrap.noParams = (hook, render) => {
   return () => {
-    const hookData = hook();
-    return render(hookData);
+    return createElement(Wrapper, { hook, children: render });
   };
 };
 

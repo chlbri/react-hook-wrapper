@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": { "outDir": "./lib", "rootDir": "./src" },
-  "exclude": ["./rolldown.config.ts", "./vitest.config.ts"]
+  "compilerOptions": { "outDir": "./lib", "rootDir": "./src", "jsx": "preserve" },
+  "exclude": ["./vite.config.ts"]
 }

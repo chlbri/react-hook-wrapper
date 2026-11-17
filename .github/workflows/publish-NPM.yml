@@ -8,12 +8,131 @@ on:
       - master
 
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pnpm repo
+        uses: chlbri/node-github-actions/.github/actions/pnpmi@main
+
+      - name: Setup Void Zero
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          node-version: 24
+          # Default is true, set explicitly: this installs the workspace with
+          # the managed pnpm, which the publish action below relies on.
+          run-install: true
+
+      # Restore only. ci-vp.yml is the single writer of this cache: a publisher
+      # running on a tag/release ref can only ever write a cache scoped to that
+      # ref, which no other run can read. Same key scheme as ci-vp so the exact
+      # entry saved by CI in this run is reused when it already exists, and the
+      # prefix falls back to the newest entry of the branch/default branch.
+      - name: Restore Vite Task cache
+        id: vite-task-cache
+        uses: actions/cache/restore@v6
+
+        with:
+          path: node_modules/.vite/task-cache
+          key:
+            ${{ runner.os }}-${{ runner.arch }}-vite-tasks-${{ github.ref }}-${{
+            hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-vite-tasks-${{ github.ref }}
+
+      - name: Build
+        run: vp run pretest
+
+      # Only save on a miss: an exact hit means the entry already exists, and
+      # cache/save@v6 fails the job when the key is already reserved.
+      - name: Save Vite Task cache
+        uses: actions/cache/save@v6
+        with:
+          path: node_modules/.vite/task-cache
+          key:
+            ${{ runner.os }}-${{ runner.arch }}-vite-tasks-${{ github.ref }}-${{
+            hashFiles('**/pnpm-lock.yaml') }}
+
+      # Only the generated `lib` folders are consumed by the publish jobs.
+      #
+      # They are staged into a temporary directory first: `upload-artifact`
+      # resolves its input with @actions/glob *before* logging anything, and a
+      # pattern starting with `**/` makes the search path the workspace root.
+      # The globber then walks every directory (root and per-package
+      # `node_modules` created by `hoistingLimits: workspaces`, `apps/*`,
+      # `.pnpm-store`) to keep a handful of files, which dominates the job
+      # duration while the transfer itself is negligible.
+      #
+      # Staging also fixes the layout. The artifact root directory is the least
+      # common ancestor of the search paths, i.e. the literal part before the
+      # first wildcard. With `packages/*/lib/**` that root is `packages`, so the
+      # archive would store `hook-wrapper/lib/index.js` instead of
+      # `packages/hook-wrapper/lib/index.js` and the publish job (which
+      # downloads into the repo root) would never find the build output.
+      - name: Stage build output
+        run: |
+          set -euo pipefail
+          rm -rf "$RUNNER_TEMP/artifact"
+          mkdir -p "$RUNNER_TEMP/artifact"
+          cp -a --parents packages/*/lib "$RUNNER_TEMP/artifact"
+
+      - name: Upload workspace
+        uses: actions/upload-artifact@v7
+
+        with:
+          name: built-workspace
+          path: ${{ runner.temp }}/artifact
+          if-no-files-found: error
+          retention-days: 1
+
   hook-wrapper:
-    uses: chlbri/node-github-actions/.github/workflows/publish.yml@main
+    needs: [build]
+    uses: chlbri/node-github-actions/.github/workflows/publish-vp.yml@main
     secrets: inherit
+
     with:
       type:
-        ${{ github.ref_name == 'beta' && 'beta' || github.ref_name ==
-        'canary' && 'canary' || 'latest' }}
+        ${{ github.ref_name == 'beta' && 'beta' || github.ref_name == 'canary' &&
+        'canary' || 'latest' }}
 
-      package: './packages/hook-wrapper'
+      package: ./packages/hook-wrapper
+      artifact: built-workspace
+
+  cleanup:
+    name: Cleanup Artifacts
+    runs-on: ubuntu-latest
+    needs: [build, hook-wrapper]
+    if: always()
+
+    permissions:
+      actions: write
+      contents: read
+
+    steps:
+      - name: Delete artifacts
+        uses: actions/github-script@v9
+
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: context.runId,
+              });
+
+              for (const artifact of artifacts.data.artifacts) {
+                if (artifact.name === 'built-workspace') {
+                  console.log(`Deleting artifact: ${artifact.name} (ID: ${artifact.id})`);
+                  await github.rest.actions.deleteArtifact({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    artifact_id: artifact.id,
+                  });
+                  console.log(`Successfully deleted artifact: ${artifact.name}`);
+                }
+              }
+            } catch (error) {
+              console.log(`Error during cleanup: ${error.message}`);
+            }

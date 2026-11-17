@@ -1,14 +1,67 @@
 packages:
   - 'packages/hook-wrapper'
-  - 'packages/__tests__/project1'
-  - 'apps/tan-react'
+  - 'packages/__tests__/*'
+  - 'apps/*'
 
 allowBuilds:
+  '@parcel/watcher': true
   esbuild: true
 
+# Workspace deps that are bundled into a published package stay linked (not
+# injected): an injected dep is a hardlink snapshot taken at install time, so a
+# fresh CI install would snapshot a `lib`-less copy and every runtime import of
+# the package would fail during the build. `pnpm pack` follows the symlink and
+# still bundles the dep's files into the tarball.
 nodeLinker: hoisted
+hoistingLimits: workspaces
 
 minimumReleaseAge: 300
 
 minimumReleaseAgeExclude:
   - '@bemedev/*'
+  - vite-plus
+  - '@voidzero-dev/*'
+  - oxlint
+  - '@oxlint/*'
+  - oxlint-tsgolint
+  - '@oxlint-tsgolint/*'
+  - oxfmt
+  - '@oxfmt/*'
+  - vitest
+  - '@vitest/*'
+
+overrides:
+  typescript: 6.0.3
+  vite@*: 'catalog:'
+  vitest@*: 'catalog:'
+
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@8.3.8000
+  vitest: 5.1.0
+  vite-plus: 1.7.0
+  '@vitest/coverage-v8': 5.1.0
+  '@vitest/ui': 5.1.0
+
+peerDependencyRules:
+  allowAny:
+    - vite
+    - vitest
+  allowedVersions:
+    vite: '*'
+    vitest: '*'
+
+permissions:
+  '@tanstack/devtools-vite':
+    skills: true
+  '@tanstack/react-router':
+    skills: [router-query, migrate-from-react-router, react-router]
+  '@tanstack/react-start':
+    skills: [migrate-from-nextjs, react-start]
+  '@tanstack/solid-router':
+    skills: true
+  '@tanstack/solid-start':
+    skills: true
+
+skills:
+  dirs:
+    - .agents/skills
