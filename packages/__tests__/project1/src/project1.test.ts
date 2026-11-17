@@ -1,7 +1,16 @@
-import { wrap } from '@bemedev/hook-wrapper';
+import { createImportTests } from '@bemedev/dev-utils/vitest-extended';
+import { describe } from 'vite-plus/test';
 
-describe('project1 tests', () => {
-  test('wrap is defined', () => {
-    expect(wrap).toBeDefined();
-  });
+const createTests = createImportTests('@bemedev/hook-wrapper');
+
+describe('TESTS', () => {
+  describe(...createTests({ SUCCESS: ['Wrapper', 'wrap', 'useHook'] }));
+
+  describe(
+    ...createTests({
+      SUCCESS: ['Wrapper'],
+      FAILS: ['wrap', 'useHook'],
+      path: 'component',
+    }),
+  );
 });

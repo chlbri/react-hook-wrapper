@@ -4,7 +4,6 @@ import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
   plugins: [viteReact()],
-
   pack: pack.bemedev({ clean: true, sourcemap: true }),
 
   run: {

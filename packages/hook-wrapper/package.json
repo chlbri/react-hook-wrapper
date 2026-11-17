@@ -1,6 +1,6 @@
 {
   "name": "@bemedev/hook-wrapper",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Wrapper of hooks to render them in a component without recreating them.",
   "type": "module",
   "main": "lib/index.js",
@@ -18,6 +18,24 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/chlbri/react-hook-wrapper"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./types": {
+      "types": "./lib/types.d.ts",
+      "import": "./lib/types.js",
+      "default": "./lib/types.js"
+    },
+    "./component": {
+      "types": "./lib/wrapper.component.d.ts",
+      "import": "./lib/wrapper.component.js",
+      "default": "./lib/wrapper.component.js"
+    },
+    "./package.json": "./package.json"
   },
   "maintainers": [
     {
@@ -43,14 +61,10 @@
     "posttest": "vp fmt",
     "pretest": "vp run pack",
     "publish:first": "vp run pretest && pnpm publish --access public --no-git-checks",
-    "rm:lib": "vp dlx rimraf ./lib",
-    "test:coverage": "vp test run",
-    "test": "vp run test:coverage --no-coverage",
-    "test:only": "vp run test",
-    "test:watch": "vp test"
+    "rm:lib": "vp dlx rimraf ./lib"
   },
   "devDependencies": {
-    "@bemedev/dev-utils": "^1.5.4",
+    "@bemedev/dev-utils": "^1.6.1",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",

@@ -8,7 +8,7 @@
     "_ci": "vp run test"
   },
   "devDependencies": {
-    "@bemedev/dev-utils": "^1.5.4",
+    "@bemedev/dev-utils": "^1.6.1",
     "@bemedev/hook-wrapper": "workspace:^",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",

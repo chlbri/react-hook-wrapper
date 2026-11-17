@@ -10,5 +10,6 @@ export default defineConfig({
     environment: 'jsdom',
     env: { RTL_SKIP_AUTO_CLEANUP: 'true' },
     globals: true,
+    server: { deps: { inline: ['@bemedev/dev-utils'] } },
   },
 });

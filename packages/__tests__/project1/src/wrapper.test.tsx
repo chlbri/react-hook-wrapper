@@ -1,108 +1,151 @@
-import { wrap } from '@bemedev/hook-wrapper';
-import { fireEvent, render, screen, cleanup } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { useState } from 'react';
 
-describe('hook-wrapper tests', () => {
-  const useCounter = ({ step = 1 }: { step?: number } = {}) => {
-    const [count, setCount] = useState(0);
-    return { count, inc: () => setCount(c => c + step) };
+import { useHook, wrap, Wrapper } from '@bemedev/hook-wrapper';
+
+type Renders = { count: number };
+
+const useCounter = ({ step = 1 }: { step?: number } = {}) => {
+  const [count, setCount] = useState(0);
+  return { count, inc: () => setCount(c => c + step) };
+};
+
+const useSimpleCounter = () => {
+  const [count, setCount] = useState(0);
+  return { count, inc: () => setCount(c => c + 1) };
+};
+
+const countOf = (testId: string) => screen.getByTestId(testId).textContent;
+
+describe('#01 => wrap', () => {
+  const CounterWrapper = wrap(useCounter);
+  const parentRenders = { count: 0 };
+  const childRenders = { count: 0 };
+
+  const Demo = ({ parentRenders }: { parentRenders: Renders }) => {
+    parentRenders.count += 1;
+    return (
+      <CounterWrapper
+        step={2}
+        render={({ count, inc }) => {
+          childRenders.count += 1;
+          return (
+            <div>
+              <span data-testid='count'>{count}</span>
+              <button data-testid='inc' onClick={inc}>
+                Inc
+              </button>
+            </div>
+          );
+        }}
+      />
+    );
   };
 
-  const DirectDemo = ({
-    parentRenders,
-    step = 1,
-  }: {
-    parentRenders: { count: number };
-    step?: number;
-  }) => {
-    parentRenders.count += 1;
-    const { count, inc } = useCounter({ step });
+  beforeAll(() => render(<Demo parentRenders={parentRenders} />));
+  afterAll(cleanup);
+
+  test('#00 => initial count is 0', () => expect(countOf('count')).toBe('0'));
+  test('#01 => parent renders once', () => expect(parentRenders.count).toBe(1));
+  test('#02 => child renders once', () => expect(childRenders.count).toBe(1));
+
+  test('#03 => click on the increment button', () => {
+    fireEvent.click(screen.getByTestId('inc'));
+  });
+
+  test('#04 => count is incremented by the step prop', () =>
+    expect(countOf('count')).toBe('2'));
+  test('#05 => parent does not rerender', () => expect(parentRenders.count).toBe(1));
+  test('#06 => child rerenders', () => expect(childRenders.count).toBe(2));
+});
+
+describe('#02 => wrap.noParams', () => {
+  const parentRenders = { count: 0 };
+  const childRenders = { count: 0 };
+
+  const EmptyCounterWrapper = wrap.noParams(useSimpleCounter, ({ count, inc }) => {
+    childRenders.count += 1;
     return (
       <div>
-        <span data-testid='direct-count'>{count}</span>
-        <button data-testid='direct-inc-btn' onClick={inc}>
+        <span data-testid='count'>{count}</span>
+        <button data-testid='inc' onClick={inc}>
           Inc
         </button>
       </div>
     );
-  };
+  });
 
-  const CounterWrapper = wrap(useCounter);
-
-  const WrappedDemo = ({
-    parentRenders,
-    childRenders,
-    step = 1,
-  }: {
-    parentRenders: { count: number };
-    childRenders: { count: number };
-    step?: number;
-  }) => {
+  const Demo = ({ parentRenders }: { parentRenders: Renders }) => {
     parentRenders.count += 1;
-    return (
-      <div>
-        <CounterWrapper
-          step={step}
-          render={({ count, inc }) => {
-            childRenders.count += 1;
-            return (
-              <div>
-                <span data-testid='wrapped-count'>{count}</span>
-                <button data-testid='wrapped-inc-btn' onClick={inc}>
-                  Inc
-                </button>
-              </div>
-            );
-          }}
-        />
-      </div>
-    );
+    return <EmptyCounterWrapper />;
   };
 
-  const directRenders = { count: 0 };
-  const parentRenders = { count: 0 };
-  const childRenders = { count: 0 };
+  beforeAll(() => render(<Demo parentRenders={parentRenders} />));
+  afterAll(cleanup);
 
-  beforeAll(() => {
-    render(<DirectDemo parentRenders={directRenders} step={1} />);
+  test('#00 => initial count is 0', () => expect(countOf('count')).toBe('0'));
+  test('#01 => parent renders once', () => expect(parentRenders.count).toBe(1));
+  test('#02 => child renders once', () => expect(childRenders.count).toBe(1));
+
+  test('#03 => click on the increment button', () => {
+    fireEvent.click(screen.getByTestId('inc'));
+  });
+
+  test('#04 => count is incremented', () => expect(countOf('count')).toBe('1'));
+  test('#05 => parent does not rerender', () => expect(parentRenders.count).toBe(1));
+  test('#06 => child rerenders', () => expect(childRenders.count).toBe(2));
+});
+
+describe('#03 => useHook', () => {
+  const CounterWrapper = useHook(useCounter);
+
+  afterAll(cleanup);
+
+  test('#01 => is an alias of wrap', () => expect(useHook).toBe(wrap));
+  test('#02 => exposes the same noParams helper', () =>
+    expect(useHook.noParams).toBe(wrap.noParams));
+
+  test('#03 => render the wrapped hook', () => {
     render(
-      <WrappedDemo
-        parentRenders={parentRenders}
-        childRenders={childRenders}
-        step={1}
+      <CounterWrapper
+        render={({ count }) => <span data-testid='count'>{count}</span>}
       />,
     );
   });
 
+  test('#04 => renders the hook data', () => expect(countOf('count')).toBe('0'));
+});
+
+describe('#04 => Wrapper', () => {
+  const childRenders = { count: 0 };
+
   afterAll(cleanup);
 
-  const directCount = () => screen.getByTestId('direct-count').textContent;
-  const wrappedCount = () => {
-    return screen.getByTestId('wrapped-count').textContent;
-  };
-
-  const dRenders = () => directRenders.count;
-  const wParent = () => parentRenders.count;
-  const wChild = () => childRenders.count;
-
-  test('#00 => direct count', () => expect(directCount()).toBe('0'));
-  test('#01 => direct renders', () => expect(dRenders()).toBe(1));
-  test('#02 => wrapped count', () => expect(wrappedCount()).toBe('0'));
-  test('#03 => wrapped parent', () => expect(wParent()).toBe(1));
-  test('#04 => wrapped child', () => expect(wChild()).toBe(1));
-
-  test('#05 => direct click', () => {
-    fireEvent.click(screen.getByTestId('direct-inc-btn'));
+  test('#01 => render the wrapper component', () => {
+    render(
+      <Wrapper hook={useSimpleCounter}>
+        {({ count, inc }) => {
+          childRenders.count += 1;
+          return (
+            <div>
+              <span data-testid='count'>{count}</span>
+              <button data-testid='inc' onClick={inc}>
+                Inc
+              </button>
+            </div>
+          );
+        }}
+      </Wrapper>,
+    );
   });
 
-  test('#06 => direct count', () => expect(directCount()).toBe('1'));
-  test('#07 => direct renders', () => expect(dRenders()).toBe(2));
+  test('#02 => initial count is 0', () => expect(countOf('count')).toBe('0'));
+  test('#03 => children renders once', () => expect(childRenders.count).toBe(1));
 
-  test('#08 => wrapped click', () => {
-    fireEvent.click(screen.getByTestId('wrapped-inc-btn'));
+  test('#04 => click on the increment button', () => {
+    fireEvent.click(screen.getByTestId('inc'));
   });
 
-  test('#09 => wrapped count', () => expect(wrappedCount()).toBe('1'));
-  test('#10 => wrapped parent', () => expect(wParent()).toBe(1));
-  test('#11 => wrapped child', () => expect(wChild()).toBe(2));
+  test('#05 => count is incremented', () => expect(countOf('count')).toBe('1'));
+  test('#06 => children rerenders', () => expect(childRenders.count).toBe(2));
 });

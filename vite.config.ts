@@ -239,6 +239,7 @@ export default defineConfig({
     },
 
     projects: [
+      'packages/hook-wrapper/vite.config.ts',
       'packages/__tests__/project1/vite.config.ts',
       'apps/tan-react/vite.config.ts',
     ],
