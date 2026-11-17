@@ -19,9 +19,9 @@ export const wrap: Wrapper_F = hook => {
   };
 };
 
-wrap.noParams = (hook, render) => {
+wrap.noParams = (hook, children) => {
   return () => {
-    return createElement(Wrapper, { hook, children: render });
+    return createElement(Wrapper, { hook, children });
   };
 };
 
